@@ -1,8 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <style>
     .myButton {
 	background-color:#f50e0e;
@@ -30,7 +31,12 @@
 </style>
 </head>
 <body>
-<img src="https://360mednet.com/media/emails/250px-Albert_Einstein_Head_cleaned.jpg">
+<div class="container">
+<br>
+<div class="row">
+    <div class="col-lg-4"></div><div class="col-lg-4"><img src="https://360mednet.com/media/emails/textlogo2.png"
+                                                                        style="width: 80%; height: 80%"></div>
+    <div class="col-lg-4"></div></div>
 <br>
 Dear {{ name }},
 
@@ -42,31 +48,29 @@ Dear {{ name }},
 Medical assistants and the like.
 <br>
 <br>As part of this community, you will be able to:
-<ul>
-    <li>Share interesting cases with other medical professionals.</li>
-    <li>Engage in closed forums for medics.</li>
-    <li>Get real time information on scholarships.</li>
-    <li>Get information about upcoming trainings and workshops.</li>
-    <li>Meet mentors and mentees.</li>
-    <li>Get information about upcoming local and international conferences.</li>
-    <li>Find local and international employment opportunities.</li>
-</ul>
+<table>
+    <tr><td></td><td><img src="https://360mednet.com/media/emails/Why360Mednet.jpg"
+                          style="width: 90%; height: 90%"></td>
+        <td></td></tr>
+</table>
 <br>
 <br>
 <table>
-    <tr><td><p align="center"><a href="{{ website }}" class="myButton" ><b>Join the community</b></a></p></td>
-        <td>&nbsp; &nbsp;</td>
-    <td><h3>Invitation code: {{ code }}</h3></td></tr>
+    <tr><td style="width: 30%"></td>
+        <td align="center"><p align="center"><a href="{{ website }}" class="myButton" ><b>Join the community</b></a>
+        </p></td><td style="width: 30%"></td></tr>
+    <tr><td style="width: 30%"></td><td align="center"><h3 align="center">Your Invitation Code:
+        {{ code }}</h3></td><td style="width: 30%"></td></tr>
 
 
-</table><br>
-
+</table>
+<br>
 
 <br>Kind regards,
 <br>360MedNet Team
 
 
-
+</div>
 </body>
 </html>
 
