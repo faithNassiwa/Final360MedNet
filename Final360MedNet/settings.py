@@ -152,8 +152,6 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
-SITE_ID = 1
-SITE_HOST = '127.0.0.1:8000'
 
 AUTH_USER_MODEL = 'auth.User'
 
