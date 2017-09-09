@@ -1,0 +1,107 @@
+{% extends "userprofile/home.html" %}
+{% load material_form %}
+{% load staticfiles %}
+{% block firsthead %}
+    <link rel="stylesheet"  href="{% static 'userprofile/css/base_styles.css' %}" >
+{% endblock %}
+{% block title %} Events | 360 MedNet {% endblock %}
+
+{% block content %}
+    <br /><br />
+<div class="container">
+{% for event in events %}
+    <div class="row">
+        <div class="list-card-v2 l-mar-top-2 js-d-poster" data-share-url="#" data-share-name="East London, City and Islington LOC AGM &amp; Discussion Workshop">
+
+    <a href="#"
+        class="
+            list-card__main
+            js-event-link
+        "
+        data-eid="33987025107"
+
+        data-rank=""
+        data-source="create_2.0"
+        data-automation="event-card"
+    >
+        <div class="list-card__header">
+            <div class="list-card__image"
+
+                style="background-color:#ffffff;"
+
+            >
+                <img
+                    class="js-poster-image"
+                    src="/media/{{ event.image }}"
+
+                    alt="{{ event.title }}"
+                />
+            </div>
+            <span class="list-card__label">Free</span>
+        </div>
+        <div class="list-card__body">
+            <time class="list-card__date" style="height: 30px;">
+
+
+
+                        {{ event.start|date:"D, j M H:i" }}
+
+
+
+            </time>
+            <div class="list-card__title">
+                {{ event.title }}
+            </div>
+            <div class="list-card__venue">
+                {{ event.venue }}
+            </div>
+        </div>
+    </a>
+    <div class="list-card__footer">
+
+
+        <div class="list-card__tags">
+
+
+                <a href="/d/london/health--events/">#Health</a>
+
+
+
+
+                <a href="/d/london/classes/">#Course</a>
+
+
+
+
+        </div>
+        <div class="list-card__actions">
+            <a
+                href="#"
+                class="js-share-event-card share-action"
+                data-eid="33987025107"
+                title="Share"
+                aria-haspopup=true
+            >
+                <i class="ico-share ico--medium"></i>
+                <span class="is-hidden-accessible">Share this event</span>
+            </a>
+            <a href="#"
+                class="js-d-bookmark"
+                data-eid="33987025107"
+                data-bookmarked=""
+                title="Save"
+                data-source-page=""
+                aria-label="Save Event"
+            >
+                <i class="ico-bookmark ico--medium"></i>
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+{% endfor %}
+
+</div>
+
+
+{% endblock %}

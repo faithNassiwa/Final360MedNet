@@ -1,0 +1,44 @@
+{% extends "website/base.html" %}
+{% load material_form %}
+
+{% block title_block %} SignUp | 360 MedNet {% endblock %}
+{% block content %}
+    {% if registered  %}
+        <div class="container">
+            <strong> Your account has been successfully registered with <strong>360 MedNet</strong> </strong>
+        Click <a href="{% url 'login' %}"> here.</a> to proceed to login.<br />
+        </div>
+
+        {% else %}
+    <div class="container">
+        <br><br>
+    <span class="flow-text">Hello there! </span>
+        <br><span class="red-text">Greetings from the 360MedNet Team.</span>
+        <br><span class="blue-grey-text">Please provide the details below to help us package the best experience
+        for you!</span>
+<form method="POST">
+    {% csrf_token %}
+    {% form form=doctor_form %}
+       {% part form.first_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
+       {% part form.last_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
+       {% part form.profession prefix %}<i class="material-icons prefix">class</i>{% endpart %}
+       {% part form.country prefix %}<i class="material-icons prefix">class</i>{% endpart %}
+   {% endform %}
+<br><br>
+    <h5>Account details</h5>
+    {% form form=user_form %}
+        {% part form.email prefix %}<i class="material-icons prefix">email</i>{% endpart %}
+        {% part form.username prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+        {% part form.password prefix %}<i class="material-icons prefix">lock_open</i>{% endpart %}
+    {% endform %}
+    <br>
+    <p><span class="red-text">Note</span>: Please remember to verify your identity as soon as possible to get the
+        full experience of 360 MedNet</p>
+    <br>
+
+    <button type="submit" name="_submit" class="btn">Register</button>
+</form>
+    </div>
+        <br><br>
+    {% endif %}
+{% endblock %}

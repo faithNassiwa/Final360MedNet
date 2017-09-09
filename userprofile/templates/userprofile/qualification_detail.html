@@ -1,0 +1,74 @@
+{% extends "userprofile/home.html" %}
+{% load material_form %}
+
+{% block title_block %} {{ object.doctor.first_name }} {{ object.doctor.last_name }} | 360 MedNet {% endblock %}
+{% block content %}
+
+              <div class="card">
+            <div class="container">
+                <br>
+                <table style="border-spacing:5px"><tr><td>
+                    <br><img class="circle" src="{{object.doctor.avatar.url }}" class="responsive-img img-fluid"
+                     style='max-height:80px;'>
+                </td>
+                    <td>
+                        <br>Dr. {{ object.doctor.first_name }} {{ object.doctor.last_name }}
+            <br>{{ object.doctor.profession}} at {{ object.doctor.hospital}}
+            <br>Joined on {{ object.doctor.created_at}}
+                    </td>
+                </tr></table>
+                <h5><span class="flow-text">About Me</span></h5>
+                {{ object.doctor.about_me }}
+                <br><h5><span class="flow-text">Patient Details</span></h5>
+                Age: {{ object.doctor.gender }} &nbsp Gender: {{ object.doctor.date_of_birth}} &nbsp
+                Country: {{ object.qualification}}
+                Country: {{ object.field}}
+                Country: {{ object.university}}
+                <br>
+                <br>history_of_present_illness
+                <br>{{ object.doctor.profession }}
+
+                <br>
+                <br>medical_history
+                <br>{{ object.doctor.specialization }}
+
+                <br>
+                <br>surgical_history
+                <br>{{ object.doctor.year_of_first_medical_certification }}
+
+                <br>
+                <br>social_history
+                <br>{{ object.doctor.mobile_number}}
+
+                <br>
+                <br>family_history
+                <br>{{ object.doctor.country }}
+
+                <br>
+                <br>allergies
+                <br>{{ object.doctor.city }}
+
+                <br>
+                <br>medications
+                <br>{{ object.doctor.hospital }}
+
+                <br>
+                <br>review_of_systems
+                <br>{{ object.doctor.work_number }}
+
+                <br>
+                <br>physical_examination
+                <br>{{ object.doctor.website }}
+
+                <br>
+                <br>medical_case_category
+                <br>{{ object.doctor.verification_status }}
+
+
+
+                <br>
+            </div>
+            </div>
+
+
+{% endblock %}

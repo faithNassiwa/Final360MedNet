@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<style>
+    .myButton {
+	background-color:blue;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid blue;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+    }
+    .myButton:hover {
+	background-color:#b1dcfb;
+    }
+    .myButton:active {
+	position:relative;
+	top:1px;
+    }
+
+</style>
+</head>
+<body>
+
+<div>
+<div style="width: 90%">
+    <img src="http://www.wen-parker.com/images/headers/medical-devices-and-equipment-header.jpg">
+</div>
+<br>
+<div style="width: 90%">
+    <br><br>Dear {{ first_name}},
+    <br>
+    <p>Thank you for signing up to 360MedNet.
+    </p>
+
+</div>
+<br>
+<div style="width: 90%">
+
+    <br>
+    <br>Kind regards,
+    <br>360MedNet Team
+
+</div>
+    <div style="width: 90%">
+         <div class="buttons-wrapper">
+          <div class="row center">
+              <a href={{ domain }}/signup/2" class="red waves-effect waves-yellow btn hoverable mg-rg"><b>
+                  Complete your registration</b><i class="matergitial-icons right">bubble_chart</i></a>
+          </div>
+        </div>
+    </div>
+    <div style="width: 90%; background-color: #555555">
+        <p><font color="#f0fff0">This email is auto generated and cannot be replied to.
+            <br>Please email info@360MedNet for any inquiries</font></p>
+        <p><font color="#f0fff0">&copy 2018 360MedNet</font></p>
+    </div>
+</div>
+
+</body>
+</html>
+
+{#Dear {{ first_name}},#}
+{#<br>#}
+{#<p>Thank you for signing up to 360MedNet.#}
+{#</p>#}
+{#Welcome Aboard.(Pictorial)#}
+{##}
+{#<br>You can now complete your registration inorder to enjoy the full experience.#}
+{##}
+{#<br><a href="{{ domain }}/signup/2" class="myButton" ><b>complete signup</b></a>#}
+{##}
+{#<br>#}
+{#<br>Kind regards,#}
+{#<br>360MedNet Team#}

@@ -1,0 +1,35 @@
+{% extends "userprofile/home.html" %}
+{% load staticfiles %}
+{% load material_form %}
+
+{% if user.is_authenticated %}
+{% block title_block %} {{doctor.first_name }} {{ doctor.last_name }} | 360 MedNet {% endblock %}
+    {% block content %}
+<div class="row container">
+<br><br><br><br>
+
+ <div class="col s12 m12 l12">
+            <div class="row">
+        <div class="col l12">
+          <div class="card">
+            <div class="card-image">
+{#              <img src="{% static 'userprofile/images/cardhdr.png' %}" alt ="360 MedNet is Secure">#}
+            </div>
+            <div class="card-content">
+            <span class="card-title"></span>
+              <form method="POST">
+                {% csrf_token %}
+                  {% form form=form %}{% endform %}
+
+                <br>
+                <button style="display: block; width: 100%;" type="submit" name="_submit" class="btn">Add </button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+
+</div>
+    {% endblock %}
+{% endif %}

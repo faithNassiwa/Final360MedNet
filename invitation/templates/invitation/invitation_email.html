@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<style>
+    .myButton {
+	background-color:#f50e0e;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #ed091c;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+    }
+    .myButton:hover {
+	background-color:#f01d1d;
+    }
+    .myButton:active {
+	position:relative;
+	top:1px;
+    }
+
+</style>
+</head>
+<body>
+Dear {{ name }},
+
+<img src="http://127.0.0.1:8001/media/emails/cute.jpg">
+
+<br>
+<br>Join and be a part of a wonderful new world on 360MedNet.
+<br>
+<br>360MedNet is a professional networking platform for Doctors, Pharmacists, Nurses, Dentists, Laboratory specialists,
+Medical assistants and the like.
+<br>
+<br>As part of this community, you will be able to:
+<ul>
+    <li>Share interesting cases with other medical professionals.</li>
+    <li>Engage in closed forums for medics.</li>
+    <li>Get real time information on scholarships.</li>
+    <li>Get information about upcoming trainings and workshops.</li>
+    <li>Meet mentors and mentees.</li>
+    <li>Get information about upcoming local and international conferences.</li>
+    <li>Find local and international employment opportunities.</li>
+</ul>
+<br>
+<br>
+<table>
+    <tr><td><p align="center"><a href="{{ website }}" class="myButton" ><b>Join the community</b></a></p></td>
+        <td>&nbsp; &nbsp;</td>
+    <td><h3>Invitation code: {{ code }}</h3></td></tr>
+
+
+</table><br>
+
+
+<br>Kind regards,
+<br>360MedNet Team
+
+
+
+</body>
+</html>
+
+

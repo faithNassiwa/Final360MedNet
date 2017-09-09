@@ -1,0 +1,113 @@
+{% extends "userprofile/home.html" %}
+{% load staticfiles %}
+
+
+{% if user.is_authenticated %}
+{% block title_block %} Dr. {{ user.doctor.first_name }} {{ user.doctor.last_name }} | 360 MedNet {% endblock %}
+
+{% block content %}
+    <br>
+<div class="card">
+<div class="row container ">
+<div class="col s12 m9 l9">
+
+        <table>
+            <tr><td>
+                    <br><img src="{{read_profile.avatar.url }}" width = "150" class="responsive-img img-fluid"
+                     style='max-height:150px;'>
+                </td>
+                    <td>
+                        <br><font color="#4682b4">Dr. {{ read_profile.first_name }} {{ read_profile.last_name }}</font>
+            <br>{{ read_profile.profession}} at {{ read_profile.hospital}}
+            <br>{{ read_profile.qualification }}
+            <br>{{ read_profile.specialization }}
+           <br><br>Joined on {{ read_profile.created_at }}
+                    </td>
+                </tr></table>
+
+        <br><div class="divider"></div>
+{#        <img src="{{ read_profile.avatar.url }}" width = "150" height = "150"  />#}
+{#        <br><div class="divider"></div>#}
+        <br> About me:<br><font color="#4682b4">{{ read_profile.about_me }}</font><br><br><br>
+        <br><div class="divider"></div><br>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>First Name :</div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.first_name }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Last Name :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.last_name }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Middle Name :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.middle_name }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Gender :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.gender }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Date of Birth :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.date_of_birth }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Qualification <a class="button" href="{% url 'add_qualification' %}">Add</a></h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">
+                {% for rq in read_qualification %}
+                <br>Qualification:{{ rq.qualification }} &nbsp Field of Study:{{ rq.field_of_study }} &nbsp University:{{ rq.university }}
+                {% endfor %}
+                </div></font>
+
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Profession :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.profession }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Specialization :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.specialization }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Year of first medical certification :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.year_of_first_medical_certification }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Year of first medical certification :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.year_of_first_medical_certification }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Personal Telephone :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.mobile_number }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Country of work :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.country }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>City of work :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.city }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Hospital :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.hospital }}</div></font>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l4"><h6>Work Telephone :</h6></div>
+            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.work_number }}</div></font>
+        </div>
+
+        <br><br>
+</div>
+<br>
+<div class="col s12 m9 l9">
+    <div class="divider"></div>
+    <br> Last updated on: {{ read_profile.updated_at}}
+    <br><br>
+    <div class="row container"><a class="btn" href="{% url 'update_doctor' user.doctor.id %}">Update Profile</a></div>
+
+</div>
+</div>
+    </div>
+
+{% endblock %}
+{% endif %}

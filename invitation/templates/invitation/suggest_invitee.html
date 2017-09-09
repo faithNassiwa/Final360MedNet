@@ -1,0 +1,39 @@
+{% extends "userprofile/home.html" %}
+{% load staticfiles %}
+{% load material_form %}
+{% block title %}Suggest doctor to invite | 360MedNet{% endblock %}
+{% block large %}
+{# <div class ="container">#}
+ <br>
+    <div class="card blue-grey darken-1 card-content white-text">
+    <div class="container" style="text-align: center">
+    <br>
+        <p class="flow-text" align="center">Suggest Doctor</p>
+
+      <div class="row">
+       {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+       <form method="post" class="viewform">
+        {% csrf_token %}
+       {% form form=form %}
+
+    {% endform %}
+       <br>
+       <div class="submit col s12">
+		<button class="btn waves-effect waves-light" type="submit" name="_submit"> Send Suggestion
+    <i class="material-icons right">send</i>
+  </button><br><br><br>
+       </div>
+       </form>
+      {% endif %}
+          <br><br>
+      <br><br></div></div></div>
+{# </div>#}
+<br><br><br><br>
+
+{% endblock %}

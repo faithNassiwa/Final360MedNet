@@ -1,0 +1,197 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+{% load material_form %}
+
+{% block title %}360MedNet{% endblock %}
+
+{% block content %}
+
+   <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="{% static 'userprofile/images/hdr01.jpg' %}"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>Welcome to 360MedNet!</h3>
+          <h5 class="light grey-text text-lighten-3">Connect. Collaborate. Create.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'userprofile/images/hdr02.jpg' %}"> <!-- random image -->
+        <div class="caption left-align">
+          <h4>Share and Learn</h4>
+          <h5 class="light grey-text text-lighten-3">Share medical cases with hundreds
+              of other medical proffessionals <br> and make better diagnosis to save lives</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'userprofile/images/hdr07.jpg' %}"> <!-- random image -->
+        <div class="caption right-align">
+          <h4>Medical Conferences and Events</h4>
+          <h5 class="light grey-text text-lighten-3">Never miss a Medical Conference
+              or Event.<br> Keep on top of all this anytime, anywhere.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'userprofile/images/hdr03.jpg' %}"> <!-- random image -->
+        <div class="caption center-align">
+          <h4>Meet other professionals</h4>
+          <h5 class="light grey-text text-lighten-3">Meet other professionals with similar
+              interests and specialisations</h5>
+        </div>
+      </li>
+    </ul>
+   </div>
+
+        <div class="buttons-wrapper">
+          <div class="row center">
+              <a href="{% url 'reg_1' %}" class="red waves-effect waves-yellow btn hoverable mg-rg"><b>join the
+                  community</b><i class="material-icons right">bubble_chart</i></a>
+              <br><br>
+              <h5 class="light white-text text-lighten-3"><b>A NETWORKING PLATFORM FOR HEALTH PROFESSIONALS IN AFRICA
+              </b></h5>
+          </div>
+        </div>
+
+    <br>
+    <div class="container" style="text-align: center">
+
+    <br>
+    <img class="responsive-img" src="{% static 'userprofile/images/Why360Mednettitle.jpg' %}" alt ="sharing image"
+         align="center" width="500">
+    <br><br>
+       <div class="row">
+
+          <div class="col s12 m4 l4">
+            <div class="row">
+        <div class="col l12">
+            <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="{% static 'userprofile/images/Why360Mednet1.jpg' %}" alt ="sharing image">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-2">Read more<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-3"><i class="material-icons right
+      btn-floating waves-effect waves-light red">close</i>Meet Others</span>
+      <p align="left" class="grey-text text-darken-2">With the success of every individual medical professional intimately linked
+          to other’s input or support, it is becoming increasingly impossible not to collaborate.
+          <br><br>Tap into the minds and intellectual resources of others with complimentary
+          training and experiences to enable you enhance your work and personal life.</p>
+    </div>
+  </div>
+        </div>
+      </div>
+          </div>
+       <div class="col s12 m4 l4">
+            <div class="row">
+        <div class="col l12">
+            <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="{% static 'userprofile/images/Why360Mednet2.jpg' %}" alt ="sharing image">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-2">Read more<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-3"><i class="material-icons right
+      btn-floating waves-effect waves-light red">close</i>Conferences</span>
+      <p align="left" class="grey-text text-darken-2">Information on conferences, scholarships, trainings,
+          workshops and many other events is disseminated every day.<br><br>We make it available
+          to you in real time so that you do not miss out on any opportunities to showcase
+          your work, learn from others or get further training.</p>
+    </div>
+  </div>
+        </div>
+      </div>
+          </div>
+       <div class="col s12 m4 l4">
+            <div class="row">
+        <div class="col l12">
+            <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="{% static 'userprofile/images/Why360Mednet3.jpg' %}" alt ="sharing image">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-2">Read more<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-3"><i class="material-icons right
+      btn-floating waves-effect waves-light red">close</i>Share & Learn</span>
+      <p align="left" class="grey-text text-darken-2">Does your writing get the attention and readership you want? <br>Do you have an interesting medical case
+          or experience that you would like to share with others? <br>Do you want to get alternative opinions
+          for case you are managing?<br><br> This is an exclusive community for you to express yourself freely.</p>
+    </div>
+  </div>
+        </div>
+      </div>
+          </div>
+    </div>
+
+       <div class="row">
+
+          <div class="col s12 m4 l4">
+            <div class="row">
+        <div class="col l12">
+            <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="{% static 'userprofile/images/Why360Mednet4.jpg' %}" alt ="sharing image">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-2">Read more<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-3"><i class="material-icons right
+      btn-floating waves-effect waves-light red">close</i>Skills & Expertise</span>
+      <p align="left" class="grey-text text-darken-2">With a full profile on 360MedNet, you will be projecting your skills and
+          expertise to potential employers, collaborators and consulting firms.
+          <br><br>It is indeed, a great way to position yourself for potential earnings.</p>
+    </div>
+  </div>
+        </div>
+      </div>
+          </div>
+       <div class="col s12 m4 l4">
+            <div class="row">
+        <div class="col l12">
+            <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="{% static 'userprofile/images/Why360Mednet5.jpg' %}" alt ="sharing image">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-2">Read more<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-3"><i class="material-icons right
+      btn-floating waves-effect waves-light red">close</i>Consultancies</span>
+      <p align="left" class="grey-text text-darken-2">If you a consultancy firm or talent acquisition company, 360MedNet will
+          provide you with a great pool of professional vetted health professionals for hire.</p>
+    </div>
+  </div>
+        </div>
+      </div>
+          </div>
+       <div class="col s12 m4 l4">
+            <div class="row">
+        <div class="col l12">
+            <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="{% static 'userprofile/images/Why360Mednet6.jpg' %}" alt ="sharing image">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-2">Read more<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-3"><i class="material-icons right
+      btn-floating waves-effect waves-light red">close</i>Fun</span>
+      <p align="left" class="grey-text text-darken-2">There’s a lot of fun within the medical fraternity! Get real time
+          updates on what’s going on around you.<br><br> Retreats, Conferences, Charity drives etc.</p>
+    </div>
+  </div>
+        </div>
+      </div>
+          </div>
+    </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "userprofile/home.html" %}
+{% load material_form %}
+{% load staticfiles %}
+{% block firsthead %}
+    <link rel="stylesheet"  href="{% static 'userprofile/css/base_styles.css' %}" >
+{% endblock %}
+{% block title %} Events | 360 MedNet {% endblock %}
+
+{% block content %}
+    <br /><br />
+<div class="container" style="width: 90%">
+    <div class="row">
+        <div class="col s8" style="padding-left: 0;">
+            <img class="responsive-img" src="/media/{{ this_event.image }}">
+        </div>
+        <div class="col s4" style="background-color: #ffffff;min-height: 304px;position: relative">
+            <p>{{ this_event.start|date:"M" }}</p>
+            <p>{{ this_event.start|date:"j" }}</p>
+            <h5>{{ this_event.title }}</h5>
+            <p>{{ this_event.organiser }}</p>
+            <p style="text-transform: uppercase;position: absolute;bottom: 0">{{ this_event.price }}</p>
+        </div>
+    </div>
+    <hr />
+    <div class="row" style="background-color: #ffffff">
+        <div class="col s8">
+            <h6>DESCRIPTION</h6>
+            <p>{{ this_event.description }} <a href="/media/{{ this_event.resource }}">More Details</a></p>
+            <br />
+            <h6>TAGS</h6>
+            <p>
+                {% for tag in tags %}
+                    <div class="chip"><a href="#" style="color: #111">{{ tag }}</a></div>
+                {% endfor %}
+            </p>
+
+            <h6>SHARE WITH FRIENDS</h6>
+            <p class="event-share-buttons">
+
+                <a href="#"><i class="fa fa-facebook-square fa-lg"></i></a>
+                <a href="#"><i class="fa fa-twitter-square fa-lg"></i></a>
+                <a href="#"><i class="fa fa-google-plus-square fa-lg"></i></a>
+                <a href="#"><i class="fa fa-linkedin-square fa-lg"></i></a>
+                <a href="#"><i class="fa fa-pinterest-square fa-lg"></i></a>
+            </p>
+        </div>
+        <div class="col s4">
+            <h6>DATE & TIME</h6>
+            <p>{{ this_event.start|date:"D, M j, Y" }}</p>
+            <p>{{ this_event.start|date:"H:i" }} – {{ this_event.end|date:"H:i" }} EAT</p>
+            <h6>LOCATION</h6>
+            <p>{{ this_event.venue }}<br />{{ this_event.address }}</p>
+            <p><a href="#">View Map</a></p>
+        </div>
+    </div>
+<hr />
+<br />
+<div class="row" style="text-align: center">
+    <h5>Other Events you may be interested in.</h5>
+</div>
+<div class="row">
+    {% for event in other_events %}
+        <div class="col s4">
+          <div class="card small">
+            <div class="card-image">
+              <img src="/media/{{ event.image }}">
+              <span class="card-title" style="font-size: 18px">{{ event.title }}</span>
+            </div>
+            <div class="card-content" style="">
+              <p>{{ event.start|date:"D, M j, Y" }}</p>
+                <p>{{ event.venue }}</p>
+            </div>
+            <div class="card-action">
+              <a href="/events/{{ event.id }}/">View Event</a>
+            </div>
+          </div>
+        </div>
+{% endfor %}
+</div>
+
+</div>
+
+
+{% endblock %}
+{% block lastfoot %}
+
+{% endblock %}

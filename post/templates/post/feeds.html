@@ -1,0 +1,17 @@
+{% extends "userprofile/home.html" %}
+{% load material_form %}
+
+{% block title_block %} 360 MedNet {% endblock %}
+{% block content %}
+
+    <div class="row container">
+    <ul>
+        {% for post in object_list %}
+            <li><h2>{{ post.post_content }}</h2></li>
+            <li>{{ post.post_content }}</li>
+            <li>{{ post.doctor.first_name }}{{ post.doctor.last_name }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+
+{% endblock %}

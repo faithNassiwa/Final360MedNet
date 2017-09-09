@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    .myButton {
+	background-color:blue;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid blue;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+    }
+    .myButton:hover {
+	background-color:#b1dcfb;
+    }
+    .myButton:active {
+	position:relative;
+	top:1px;
+    }
+
+</style>
+</head>
+<body>
+Dear {{ doctor.first_name}},
+<br>
+<p>We are so glad you've chosen to be a part of the 360MedNet Community!
+</p>
+Welcome Aboard.(Pictorial)
+
+<br>You can now see what's happening in our Community.
+
+<br><a href="{{ domain }}/login" class="myButton" ><b>login</b></a>
+
+<br>
+<br>Kind regards,
+<br>360MedNet Team
+</body>
+</html>

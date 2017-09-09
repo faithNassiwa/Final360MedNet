@@ -1,0 +1,97 @@
+{% extends "userprofile/home.html" %}
+{% load material_form %}
+{% load staticfiles %}
+{% block firsthead %}
+    <link rel="stylesheet"  href="{% static 'userprofile/css/base_styles.css' %}" >
+{% endblock %}
+{% block title %} Job Title | 360 MedNet {% endblock %}
+
+{% block content %}
+    <br /><br />
+<div class="container" style="width: 90%">
+    <div class="row">
+        <div class="col s8">
+            <img class="responsive-img" src="https://dummyimage.com/600x400/000/fff">
+        </div>
+        <div class="col s4" style="background-color: #ffffff">
+            <p>Deadline: JUN 12, 2017</p>
+            <h5>Scholarship title goes here. Scholarship title goes here</h5>
+            <p>By Organisation of the event.</p>
+            <p>Grant</p>
+        </div>
+    </div>
+    <hr />
+    <div class="row" style="background-color: #ffffff">
+        <div class="col s8">
+            <h6>DESCRIPTION</h6>
+            <p>
+                A half day symposium to explore the use of colour to express emotions and sensations.
+This symposium will present the outcome of a UCL Grand Challenges: Human Wellbeing award exploring how colour can express feelings and emotions, towards developing a visual language for wellbeing. The project, 'Measuring Wellbeing Creatively' has worked with a group of stroke survivors to develop a 'toolkit' for measuring wellbeing using colours.
+Join us to find out more about the project and to test out the tooklit we have produced.
+This event is open to all but may be of most interest to academics, speech therapists, students healthcare professionals, artists, stroke survivors and their families.
+Lunch and refreshments will be provided.
+
+            </p>
+            <br />
+            <h6>TAGS</h6>
+            <p>
+                <div class="chip">Tag 1</div>
+            <div class="chip">Tag 2</div>
+            <div class="chip">Tag 3</div>
+            </p>
+
+            <h6>SHARE WITH FRIENDS</h6>
+            <p>
+                <a href="#"><i class="material-icons circle green">play_arrow</i></a>
+                <a href="#"><i class="material-icons circle green">play_arrow</i></a>
+                <a href="#"><i class="material-icons circle green">play_arrow</i></a>
+                <a href="#"><i class="material-icons circle green">play_arrow</i></a>
+                <a href="#"><i class="material-icons circle green">play_arrow</i></a>
+            </p>
+        </div>
+        <div class="col s4">
+            <h6>TIME PERIOD</h6>
+            <p>Mon, June 12, 2017</p>
+            <p>10:00 AM – 2:00 PM BST</p>
+            <h6>LOCATION</h6>
+            <p>University College London
+Gower Street
+Haldane Room, Wilkins Building (Main Building)
+London
+WC1E 6BT
+United Kingdom</p>
+            <p><a>Visit Website</a></p>
+        </div>
+    </div>
+<hr />
+<br />
+<div class="row" style="text-align: center">
+    <h5>Other Events you may be interested in.</h5>
+</div>
+<div class="row">
+    {% for c in counts %}
+        <div class="col s4">
+          <div class="card small">
+            <div class="card-image">
+              <img src="https://dummyimage.com/600x400/000/fff">
+              <span class="card-title" style="font-size: 18px">Title of the event goes here. this is the title.</span>
+            </div>
+            <div class="card-content" style="">
+              <p>THU, 8 JUN 17:00</p>
+                <p>Outbox, Kampala Uganda</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+{% endfor %}
+</div>
+
+</div>
+
+
+{% endblock %}
+{% block lastfoot %}
+
+{% endblock %}

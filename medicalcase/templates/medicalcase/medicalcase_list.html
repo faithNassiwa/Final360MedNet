@@ -1,0 +1,65 @@
+{% extends "userprofile/home.html" %}
+{% load staticfiles %}
+{% load material_form %}
+
+{% block title %} Medical Cases | 360 MedNet {% endblock %}
+{% block large %}
+
+<div class="col l12 m12 s12">
+ <a href="{% url 'medical-case' %}">
+  <div class="card card light-green card-content white-text">
+    <div class="card-content" align="center">
+        <span class="flow-text" style="font-weight: 300">Create New Medical Case</span>
+
+    </div>
+  </div>
+</a>
+</div>
+
+<div class="col l12 m12 s12">
+{% if object_list.count > 0 %}
+        {% for medical_case in object_list %}
+              <div class="card">
+            <div class="container">
+                <br>
+                <br><span class="flow-text" ><a href="{% url 'medical_case-detail' medical_case.id %}">{{ medical_case.title }}</a></span>
+
+                <br><br><span class="green-text">Presenting Complaint</span>
+                <br><span class="blue-grey-text">{{ medical_case.chief_complaint }}</span>
+                <br><br><span class="blue-grey-text">Reason for sharing</span> : <span class="green-text">{{ medical_case.purpose }}</span>
+            <br>
+                <table><tr><td>
+                    <br><a href="{% url 'doctor-detail' medical_case.doctor.id %}"><img class="circle" src="{{medical_case.doctor.avatar.url }}" class="responsive-img img-fluid"
+                                                                                        style='max-height:80px;'></a>
+                </td>
+                    <td>Shared by:<br>
+                        <div class="grey-text">
+                        <br><a href="{% url 'doctor-detail' medical_case.doctor.id %}">Dr. {{ medical_case.doctor.first_name }} {{ medical_case.doctor.last_name }}</a>
+            <br>{{ medical_case.doctor.profession}} at {{ medical_case.doctor.hospital}}
+            <br>Posted on {{ medical_case.created_at}}
+             <br>Last updated on {{ medical_case.updated_at}}
+                        </div>
+                    </td>
+                </tr></table>
+
+                <br>
+            </div>
+            </div>
+        {% endfor %}
+{% else %}
+        <div class="col l12 m12 s12">
+          <div class="card">
+            <div class="card-image">
+              <img src="{% static 'userprofile/images/hdr3.jpg' %}">
+            </div>
+            <div class="card-content">
+            <span class="card-title"></span>
+              <p class="blue-grey-text">Sorry {{ user.doctor.first_name }}, Nothing  has been posted. Be the first to share something with us.</p>
+            </div>
+          </div>
+        </div>
+{% endif %}
+</div>
+
+
+{% endblock %}

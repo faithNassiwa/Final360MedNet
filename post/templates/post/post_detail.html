@@ -1,0 +1,40 @@
+{% extends "userprofile/home.html" %}
+{% load staticfiles %}
+{% load material_form %}
+
+{% block title_block %} Post | 360 MedNet {% endblock %}
+{% block large %}
+    <div class="card">
+    <div class="container">
+    <br><br>
+
+    <div class="card-title">
+        <span class="flow-text blue-text" style="font-weight: 300">{{ post.title }}</span>
+    </div>
+
+        <p class="grey-text text-darken-2">{{ object.post_content }}</p>
+    <br><br>
+        Posted by: <span class="blue-text"> Dr. {{ object.doctor.first_name }} {{ object.doctor.last_name }}</span>
+{#    <br><a href="{% url 'comment' object.id %}" class="button">Comment</a>#}
+    <br>
+     <form method="POST" action="{% url 'post-comment' object.id %}">
+            {% csrf_token %}
+           {% form form=form %}{% endform %}
+
+            <button type="submit" name="_submit" class="btn">Comment</button>
+        </form>
+    <br><br>
+
+
+    {% for comment in view.comments %}
+        <br>{{ comment.comment_content }}
+        <br>
+        <br><span class="grey-text">{{ comment.doctor.first_name  }} &nbsp{{ comment.doctor.last_name  }}</span>
+        <br><span class="grey-text">{{ comment.created_at }}</span>
+        <br><br>
+        <div class="divider"></div>
+        <br>
+    {% endfor %}
+    </div></div>
+
+{% endblock %}

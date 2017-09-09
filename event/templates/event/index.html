@@ -1,0 +1,208 @@
+{% extends "userprofile/home.html" %}
+{% load material_form %}
+{% load staticfiles %}
+{% block firsthead %}
+    <link rel="stylesheet"  href="{% static 'userprofile/css/base_styles.css' %}" >
+
+{% endblock %}
+{% block title %} Events | 360 MedNet {% endblock %}
+
+{% block content %}
+    <br>
+<div class="container" style="width: 95%;">
+    <div class="card">
+    <div class="card-content">
+    <div class="col s12 m12 l12" align="center">
+        <h3 style="font-weight: lighter;">Find your next event</h3>
+    </div>
+        <br><br>
+
+        <div class="row" align="center">
+            <form action="/events/search/" method="post">
+                {% csrf_token %}
+                <div class="input-field col s12 m4 l3">
+                  <input placeholder="Search all Events" id="search_field" name="search_field" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m4 l3">
+                  <input placeholder="Region" id="events_region" name="events_region" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m4 l3">
+                    <select id="events_date" name="events_date">
+                      <option value="0" disabled selected>All Dates</option>
+                      <option value="1">Today</option>
+                      <option value="2">Tomorrow</option>
+                      <option value="3">This Week</option>
+                        <option value="4">This Weekend</option>
+                        <option value="5">This Month</option>
+                        <option value="6">Next Month</option>
+                    </select>
+                </div>
+                <div class="input-field col s12 m12 l3">
+{#                    <button type="submit" class="waves-effect waves-light btn">Search</button>#}
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                    <i class="material-icons right">search</i>
+                  </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+<br>
+<div class="container" style="width: 95%;">
+<div class="card">
+<div class="row" align="center">
+    <br><br>
+<h5 style="font-weight: lighter;">These Events are available in your region</h5><br><br>
+</div>
+    <div class="row">
+{% for event in events %}
+        <div class="col s12 m4 l4">
+          <div class="card small">
+              <a href="/events/{{ event.id }}/">
+                <div class="card-image">
+                  <img src="/media/{{ event.image }}" alt="{{ event.title }}">
+                  <span class="card-title" style="font-size: 18px">{{ event.title }}</span>
+                </div>
+                <div class="card-content" style="color: #555">
+                  <p>{{ event.start|date:"D, j M H:i" }}</p>
+                    <p>{{ event.venue }}</p>
+                </div>
+                <div class="card-action">
+                  <a href="/events/{{ event.id }}/">View Event</a>
+                </div>
+              </a>
+          </div>
+        </div>
+{% endfor %}
+    </div>
+    {% for event in events %}
+
+    {% endfor %}
+
+      </div></div>
+
+<div class="row" style="text-align: center">
+    <a class="waves-effect waves-light btn"><i class="material-icons right">view_module</i>Browse by top categories</a>
+{#    <h5 style="font-weight: lighter;">Browse by top categories</h5>#}
+</div>
+
+
+    <div class="row">
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Conferences</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Training Workshops</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Scholarships</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Grant Calls</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Job Oppotunities</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Charity Events</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Community Outreach</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Others</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col s12 m4 l4">
+        <a href="">
+        <div class="card">
+            <div class="card-image"><img src="{% static 'userprofile/images/Events.jpg' %}"></div>
+            <div class="card-title container">Others</div>
+            <div class="card-content">
+
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+
+    <div class="card blue-grey white-text" style="height: 100px">
+        <br><p align="center">&copy 2017 360MedNet Events</p>
+    </div>
+
+
+{% endblock %}
+{% block lastfoot %}
+
+{% endblock %}
