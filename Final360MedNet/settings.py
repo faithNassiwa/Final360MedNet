@@ -152,6 +152,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
+SITE_ID = 1
+SITE_HOST = config('SITE_HOST')
 
 AUTH_USER_MODEL = 'auth.User'
 
@@ -197,4 +199,3 @@ if DEBUG is False:
 
     X_FRAME_OPTIONS = 'DENY'
 
-    SITE_HOST = '360mednet.com'
