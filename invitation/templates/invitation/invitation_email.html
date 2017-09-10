@@ -2,8 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <style>
     .myButton {
 	background-color:#f50e0e;
@@ -31,46 +29,59 @@
 </style>
 </head>
 <body>
-<div class="container">
-<br>
-<div class="row">
-    <div class="col-lg-4"></div><div class="col-lg-4"><img src="https://360mednet.com/media/emails/textlogo2.png"
-                                                                        style="width: 80%; height: 80%"></div>
-    <div class="col-lg-4"></div></div>
-<br>
-Dear {{ name }},
 
+<table>
+    <tr><td style="width: 30%"></td><td align="center">
+    <img src="https://360mednet.com/media/emails/textlogo2.png" style="width: 40%; height: 40%">
+        </td>
+        <td style="width: 30%"></td></tr>
+</table>
 
 <br>
+
+<table>
+    <tr><td style="width: 30%"></td><td align="left">
+    Dear {{ name }},
+   </td><td style="width: 30%"></td></tr>
+</table>
+
+<br>
+<table>
+    <tr><td style="width: 10%"></td><td align="left">
 <br>Join and be a part of a wonderful new world on 360MedNet.
 <br>
 <br>360MedNet is a professional networking platform for Doctors, Pharmacists, Nurses, Dentists, Laboratory specialists,
 Medical assistants and the like.
 <br>
 <br>As part of this community, you will be able to:
+           </td>
+        <td style="width: 10%"></td></tr>
+</table>
+<br>
 <table>
-    <tr><td></td><td><img src="https://360mednet.com/media/emails/Why360Mednet.jpg"
-                          style="width: 90%; height: 90%"></td>
-        <td></td></tr>
+    <tr><td style="width: 10%"></td><td align="center"><img src="https://360mednet.com/media/emails/Why360Mednet.jpg"
+                          style="width: 80%; height: 80%"></td>
+        <td style="width: 10%"></td></tr>
 </table>
 <br>
 <br>
 <table>
-    <tr><td style="width: 30%"></td>
+    <tr><td style="width: 45%"></td>
         <td align="center"><p align="center"><a href="{{ website }}" class="myButton" ><b>Join the community</b></a>
-        </p></td><td style="width: 30%"></td></tr>
-    <tr><td style="width: 30%"></td><td align="center"><h3 align="center">Your Invitation Code:
-        {{ code }}</h3></td><td style="width: 30%"></td></tr>
+        </p></td><td style="width: 35%"></td></tr>
+    <tr><td style="width: 45%"></td><td align="center"><h3 align="center">Your Invitation Code:
+        {{ code }}</h3></td><td style="width: 10%"></td></tr>
 
 
 </table>
 <br>
-
+<table>
+    <tr><td style="width: 30%"></td><td align="left">
 <br>Kind regards,
 <br>360MedNet Team
+    </td><td style="width: 30%"></td></tr>
+</table>
 
-
-</div>
 </body>
 </html>
 
