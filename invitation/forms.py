@@ -116,7 +116,7 @@ class RegistrationForm2(forms.ModelForm):
 
 
 class RegistrationForm3(forms.ModelForm):
-    country = forms.CharField(label="Country of Practice")
+    # country = forms.CharField(label="Country of Practice")
     layout = Layout(
         Fieldset('Medical details',
                  'profession', 'country'
