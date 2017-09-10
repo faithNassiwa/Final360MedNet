@@ -67,7 +67,7 @@ class UserForm(forms.ModelForm):
 
 
 class DoctorForm(forms.ModelForm):
-    country = forms.CharField(label="Country of Practice")
+#country = forms.CharField(label="Country of Practice")
     layout = Layout(Fieldset('Personal details',
                              Row('first_name', 'last_name'),
                              'profession', 'specialization', 'country'
@@ -76,7 +76,7 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ('first_name', 'last_name', 'profession', 'specialization', 'country')
-        widgets = {'country': CountrySelectWidget()}
+        widgets = {'country': CountrySelectWidget(labels="Country of Practice")}
 
 
 class SocialSiteForm(forms.ModelForm):
