@@ -76,7 +76,7 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ('first_name', 'last_name', 'profession', 'specialization', 'country')
-        widgets = {'country': CountrySelectWidget(labels="Country of Practice")}
+        # widgets = {'country': CountrySelectWidget(labels="Country of Practice")}
 
 
 class SocialSiteForm(forms.ModelForm):
