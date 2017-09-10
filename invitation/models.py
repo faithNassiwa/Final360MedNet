@@ -78,7 +78,7 @@ class FriendInvitation(models.Model):
             'link': link,
         })
         message = template.render(context)
-        msg = send_mail(
+        msg = EmailMultiAlternatives(
             subject, message,
             settings.EMAIL_HOST_USER, [self.email]
         )
