@@ -73,6 +73,7 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ('first_name', 'last_name', 'profession', 'country')
+        widgets = {'country': CountrySelectWidget(labels="Country of Practice")}
 
 
 def invitation_code_exists(value):
