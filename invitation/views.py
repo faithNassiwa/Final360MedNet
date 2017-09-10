@@ -1,5 +1,6 @@
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -147,8 +148,8 @@ def registration_one(request):
 
             })
             to_email2 = Invitation.objects.filter(accepted=False).get(code=request.session['invitation_code'])
-            email = EmailMessage(subject, message, to=[to_email2.email])
-            email.content_subtype = "html"
+            email = EmailMultiAlternatives(subject, message, to=[to_email2.email])
+            email.attach_alternative(message, "text/html")
             email.send()
             return HttpResponseRedirect(reverse('reg_2'))
     return render(request, 'invitation/registration_one.html', {'form': form})
@@ -187,8 +188,8 @@ def registration_two(request):
 
             })
             to_email1 = user.email
-            email = EmailMessage(subject, message, to=[to_email1])
-            email.content_subtype = "html"
+            email = EmailMultiAlternatives(subject, message, to=[to_email1])
+            email.attach_alternative(message, "text/html")
             email.send()
 
             return HttpResponseRedirect(reverse('finished'))

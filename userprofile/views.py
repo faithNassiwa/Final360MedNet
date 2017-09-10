@@ -127,8 +127,8 @@ def unverified_register(request):
 
             })
             to_email = user.email
-            email = EmailMessage(subject, message, to=[to_email])
-            email.content_subtype = "html"
+            email = EmailMultiAlternatives(subject, message, to=[to_email])
+            email.attach_alternative(message, "text/html")
             email.send()
 
         else:
