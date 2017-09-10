@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from material.base import Layout, Row, Fieldset
 from invitation.models import Invitation, FriendInvitation, SuggestedInvitee
 from userprofile.models import Doctor
+from django_countries.widgets import CountrySelectWidget
 
 
 def email_already_registered_or_invited(value):
@@ -122,6 +123,7 @@ class RegistrationForm3(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ('profession', 'country')
+        widgets = {'country': CountrySelectWidget(labels="Country of Practice")}
 
 
 class RegistrationForm4(forms.Form):
