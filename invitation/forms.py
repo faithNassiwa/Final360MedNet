@@ -66,7 +66,6 @@ class UserForm(forms.ModelForm):
 
 
 class DoctorForm(forms.ModelForm):
-    country = forms.CharField(label="Country of Practice")
     layout = Layout(Fieldset('Personal details',
                              'profession', 'country'
                              ))
@@ -116,7 +115,6 @@ class RegistrationForm2(forms.ModelForm):
 
 
 class RegistrationForm3(forms.ModelForm):
-    # country = forms.CharField(label="Country of Practice")
     layout = Layout(
         Fieldset('Medical details',
                  'profession', 'country'
@@ -130,5 +128,5 @@ class RegistrationForm3(forms.ModelForm):
 
 class RegistrationForm4(forms.Form):
     tos = forms.BooleanField(required=True, label="Click here to indicate that you have read and agree to the "
-                                                  "360MedNet Terms of use and Privacy Policy",
+                                                  "360MedNet Terms of use and Privacy Policy.",
                              )
