@@ -32,6 +32,25 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
+if DEBUG is False:
+    SECURE_HSTS_SECONDS = 60
+
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = config('DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS', cast=bool, default=True)
+
+    SECURE_CONTENT_TYPE_NOSNIFF = config('DJANGO_SECURE_CONTENT_TYPE_NOSNIFF', cast=bool, default=True)
+
+    SECURE_BROWSER_XSS_FILTER = True
+
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+
+    SECURE_SSL_REDIRECT = config('DJANGO_SECURE_SSL_REDIRECT', cast=bool, default=True)
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+
+    X_FRAME_OPTIONS = 'DENY'
+
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
@@ -184,21 +203,4 @@ DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 settings.COUNTRIES_FIRST = ['UG']
 
 
-if DEBUG is False:
-    SECURE_HSTS_SECONDS = 60
-
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = config('DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS', cast=bool, default=True)
-
-    SECURE_CONTENT_TYPE_NOSNIFF = config('DJANGO_SECURE_CONTENT_TYPE_NOSNIFF', cast=bool, default=True)
-
-    SECURE_BROWSER_XSS_FILTER = True
-
-    SESSION_COOKIE_SECURE = True
-    SESSION_COOKIE_HTTPONLY = True
-
-    SECURE_SSL_REDIRECT = config('DJANGO_SECURE_SSL_REDIRECT', cast=bool, default=True)
-    CSRF_COOKIE_SECURE = True
-    CSRF_COOKIE_HTTPONLY = True
-
-    X_FRAME_OPTIONS = 'DENY'
 
