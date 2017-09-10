@@ -66,6 +66,7 @@ class UserForm(forms.ModelForm):
 
 
 class DoctorForm(forms.ModelForm):
+    country = forms.CharField(label="Country of Practice")
     layout = Layout(Fieldset('Personal details',
                              'profession', 'country'
                              ))
@@ -73,7 +74,7 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ('first_name', 'last_name', 'profession', 'country')
-        widgets = {'country': CountrySelectWidget(labels="Country of Practice")}
+        widgets = {'country': CountrySelectWidget()}
 
 
 def invitation_code_exists(value):
@@ -115,7 +116,7 @@ class RegistrationForm2(forms.ModelForm):
 
 
 class RegistrationForm3(forms.ModelForm):
-    #country = forms.CharField(label="Country of Practice")
+    country = forms.CharField(label="Country of Practice")
     layout = Layout(
         Fieldset('Medical details',
                  'profession', 'country'
@@ -124,7 +125,7 @@ class RegistrationForm3(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ('profession', 'country')
-        widgets = {'country': CountrySelectWidget(labels="Country of Practice")}
+        widgets = {'country': CountrySelectWidget()}
 
 
 class RegistrationForm4(forms.Form):
