@@ -22,13 +22,14 @@ class Invitation(models.Model):
         return self.name
 
     def send_invite(self):
+        home = '360mednet.com'
         subject = 'Invitation to join 360MedNet'
         link = 'http://%s/join/%s/' % (
-            settings.SITE_HOST,
+            home,
             self.code
         )
         website = 'http://%s/' % (
-            settings.SITE_HOST,
+            home,
 
         )
         context = Context({
@@ -64,9 +65,10 @@ class FriendInvitation(models.Model):
         return self.name
 
     def send_invite(self):
+        home = '360mednet.com'
         subject = 'Invitation to join 360MedNet'
         link = 'http://%s/join/friend/%s/' % (
-            settings.SITE_HOST,
+            home,
             self.code
         )
         template = get_template('invitation/friend_invitation_email.html')

@@ -140,9 +140,10 @@ def registration_one(request):
 
             current_site = get_current_site(request)
             subject = 'Welcome to 360MedNet.'
+            home = '360mednet.com'
             message = render_to_string('invitation/signup_email.html', {
                 'first_name': request.session['first_name'],
-                'domain': current_site.domain,
+                'domain': home,
 
             })
             to_email2 = Invitation.objects.filter(accepted=False).get(code=request.session['invitation_code'])
@@ -178,10 +179,11 @@ def registration_two(request):
 
             current_site = get_current_site(request)
             subject = 'Welcome to 360MedNet.'
+            home = '360mednet.com'
             message = render_to_string('invitation/thank_you_signup_email.html', {
                 'user': user,
                 'doctor': doctor,
-                'domain': current_site.domain,
+                'domain': home,
 
             })
             to_email1 = user.email
