@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -88,8 +89,8 @@ def register(request, reg_number):
 
             })
             to_email = email
-            email = EmailMessage(subject, message, to=[to_email])
-            email.content_subtype = "html"
+            email = EmailMultiAlternatives(subject, message, to=[to_email])
+            email.attach_alternative(message, "text/html")
             email.send()
 
         else:
