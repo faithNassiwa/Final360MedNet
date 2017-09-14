@@ -81,12 +81,13 @@ def medical_case_comment_add_view(request, pk):
     return HttpResponseRedirect(reverse('medical_case-detail', kwargs={'pk': pk}))
 
 
+@login_required
 def send_top_five_medical_cases_weekly(request):
     weekly_five_medical_cases = MedicalCase.weekly_top_five_medical_case()
     subject_medical_case = MedicalCase.objects.last()
     weekly_top_five_discussions = Post.weekly_top_five_discussions()
     registered_doctors = Doctor.objects.all()
-    #registered_doctors_mailing_list = []
+    # registered_doctors_mailing_list = []
     for registered_doctor in registered_doctors:
         # registered_doctors_mailing_list.append(registered_doctor.user.email) ## might need to accesss name of the docs
 
@@ -107,5 +108,6 @@ def send_top_five_medical_cases_weekly(request):
     return HttpResponse("Successfully sent")
 
 
+@login_required
 def view_medical_case_email(request):
     return render(request, 'medicalcase/medicalcase_email_update.html')

@@ -36,6 +36,46 @@ class EmailAuthenticationForm(AuthenticationForm):
                 )
         return username
 
+def home(request):
+    return render(request, 'userprofile/home.html')
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = VerifyForm(request.POST)
+        if form.is_valid():
+            invitation = Invitation(
+                name=form.cleaned_data['other_name'],
+                organization=form.cleaned_data['organization'],
+                email=form.cleaned_data['alternative_email'],
+                code=User.objects.make_random_password(6)
+            )
+
+            invitation.save()
+            invitation.send_invite()
+            messages.success(request, message='An invitation has been sent to  %s, please check your email to '
+                                              'access next steps.' % invitation.email
+                             )
+            Medic.objects.filter(other_name__iexact=form.cleaned_data['other_name'],
+                                 surname__iexact=form.cleaned_data['surname']). \
+                update(verification_status=True, invitation_status=True)
+
+    else:
+        form = VerifyForm()
+    return render(request, 'userprofile/signup.html', {'form': form})
+
+
+def signup_activate(request):
+    return render(request, 'userprofile/signup_activate.html')
+
+
+class RegisterUpdateView(UpdateView):
+    model = Doctor
+    fields = ['first_name', 'last_name', 'profession', 'country']
+
+    template_name = 'userprofile/register_update.html'
+    success_url = 'login'
+
 
 def verify(request):
     form = VerifyForm(data=request.POST)
@@ -141,7 +181,7 @@ def unverified_register(request):
     return render(request, 'userprofile/unverified_register.html', locals())
 
 
-@login_required(login_url='/login/')
+@login_required
 def get_profile(request, username):
     user = User.objects.get(username=username)
     doctor = Doctor.objects.get(user=user)
@@ -205,42 +245,3 @@ class UpdateQualification(UpdateView):
         return super(UpdateQualification, self).form_valid(form)
 
 
-def home(request):
-    return render(request, 'userprofile/home.html')
-
-
-def signup(request):
-    if request.method == 'POST':
-        form = VerifyForm(request.POST)
-        if form.is_valid():
-            invitation = Invitation(
-                name=form.cleaned_data['other_name'],
-                organization=form.cleaned_data['organization'],
-                email=form.cleaned_data['alternative_email'],
-                code=User.objects.make_random_password(6)
-            )
-
-            invitation.save()
-            invitation.send_invite()
-            messages.success(request, message='An invitation has been sent to  %s, please check your email to '
-                                              'access next steps.' % invitation.email
-                             )
-            Medic.objects.filter(other_name__iexact=form.cleaned_data['other_name'],
-                                 surname__iexact=form.cleaned_data['surname']). \
-                update(verification_status=True, invitation_status=True)
-
-    else:
-        form = VerifyForm()
-    return render(request, 'userprofile/signup.html', {'form': form})
-
-
-def signup_activate(request):
-    return render(request, 'userprofile/signup_activate.html')
-
-
-class RegisterUpdateView(UpdateView):
-    model = Doctor
-    fields = ['first_name', 'last_name', 'profession', 'country']
-
-    template_name = 'userprofile/register_update.html'
-    success_url = 'login'
