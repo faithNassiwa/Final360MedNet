@@ -81,7 +81,7 @@ def register(request, reg_number):
             qs.update(status=True)
             current_site = get_current_site(request)
             subject = 'Welcome to 360MedNet.'
-            message = render_to_string('userprofile/thank_you_signup_email.html', {
+            message = render_to_string('userprofile/emails/thank_you_signup_email.html', {
                 'user': user,
                 'doctor': doctor,
                 'domain': current_site.domain,
@@ -119,7 +119,7 @@ def unverified_register(request):
             registered = True
             current_site = get_current_site(request)
             subject = 'Welcome to 360MedNet.'
-            message = render_to_string('userprofile/thank_you_signup_email.html', {
+            message = render_to_string('userprofile/emails/thank_you_signup_email.html', {
                 'user': user,
                 'doctor': doctor,
                 'domain': current_site.domain,

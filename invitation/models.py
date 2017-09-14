@@ -21,6 +21,10 @@ class Invitation(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def get_specific_unaccepted_invitation(cls, invitation_code):
+        return cls.objects.filter(accepted=False).get(code=invitation_code)
+
     def send_invite(self):
         home = '360mednet.com'
         subject = 'Invitation to join 360MedNet'
@@ -40,7 +44,7 @@ class Invitation(models.Model):
             'code': self.code
         })
 
-        html_content = render_to_string('invitation/invitation_email.html', context)
+        html_content = render_to_string('invitation/emails/invitation_email.html', context)
         text_content = strip_tags(html_content)
 
         message = html_content
@@ -50,6 +54,24 @@ class Invitation(models.Model):
         )
         msg.attach_alternative(html_content, "text/html")
         msg.send()
+
+    @classmethod
+    def send_signup_email(cls, context, invitation_code):
+        subject = 'Welcome to 360MedNet.'
+        message = render_to_string('invitation/emails/signup_email.html', context)
+        invited_medic = Invitation.get_specific_unaccepted_invitation(invitation_code)
+        email = EmailMultiAlternatives(subject, message, to=[invited_medic.email])
+        email.attach_alternative(message, "text/html")
+        email.send()
+
+    @classmethod
+    def send_thank_you_for_signing_up_email(cls, context, user):
+        subject = 'Welcome to 360MedNet.'
+        message = render_to_string('invitation/emails/thank_you_signup_email.html', context)
+        to_email = user.email
+        email = EmailMultiAlternatives(subject, message, to=[to_email])
+        email.attach_alternative(message, "text/html")
+        email.send()
 
 
 class FriendInvitation(models.Model):

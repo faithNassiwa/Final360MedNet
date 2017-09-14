@@ -15,6 +15,10 @@ from userprofile.forms import DoctorForm, UserForm
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from userprofile.models import MedicEmail
+from django.template import Context
+from django.conf import settings
+
+home = settings.SITE_HOST
 
 
 @staff_member_required
@@ -138,19 +142,11 @@ def registration_one(request):
             request.session['first_name'] = form.cleaned_data['first_name']
             request.session['last_name'] = form.cleaned_data['last_name']
             request.session['invitation_code'] = form.cleaned_data['invitation_code']
-
-            current_site = get_current_site(request)
-            subject = 'Welcome to 360MedNet.'
-            home = '360mednet.com'
-            message = render_to_string('invitation/signup_email.html', {
+            context = Context({
                 'first_name': request.session['first_name'],
-                'domain': home,
+                'domain': home})
 
-            })
-            to_email2 = Invitation.objects.filter(accepted=False).get(code=request.session['invitation_code'])
-            email = EmailMultiAlternatives(subject, message, to=[to_email2.email])
-            email.attach_alternative(message, "text/html")
-            email.send()
+            Invitation.send_signup_email(context, request.session['invitation_code'])
             return HttpResponseRedirect(reverse('reg_2'))
     return render(request, 'invitation/registration_one.html', {'form': form})
 
@@ -162,13 +158,13 @@ def registration_two(request):
     last_name = request.session['last_name']
     if request.method == 'POST':
         if doctor_form.is_valid() and user_form.is_valid():
-            doctor = doctor_form.save(commit=False)
-            user = user_form.save(commit=False)
+            user = user_form.save()
             user.username = first_name + "-" + last_name + "-" + User.objects.make_random_password(8)
             user.first_name = request.session['first_name']
             user.last_name = request.session['last_name']
             user.set_password(user.password)
             user.save()
+            doctor = doctor_form.save(commit=False)
             doctor = Doctor.objects.create(first_name=request.session['first_name'],
                                            last_name=request.session['last_name'],
                                            invitation_code=request.session['invitation_code'],
@@ -178,19 +174,13 @@ def registration_two(request):
                                            country=doctor.country, user=user,
                                            verification_status=True)
 
-            current_site = get_current_site(request)
-            subject = 'Welcome to 360MedNet.'
-            home = '360mednet.com'
-            message = render_to_string('invitation/thank_you_signup_email.html', {
+            context = Context({
                 'user': user,
                 'doctor': doctor,
                 'domain': home,
 
             })
-            to_email1 = user.email
-            email = EmailMultiAlternatives(subject, message, to=[to_email1])
-            email.attach_alternative(message, "text/html")
-            email.send()
+            Invitation.send_thank_you_for_signing_up_email(context, user)
 
             return HttpResponseRedirect(reverse('finished'))
     return render(request, 'invitation/registration_two.html', {'doctor_form': doctor_form, 'user_form': user_form,
