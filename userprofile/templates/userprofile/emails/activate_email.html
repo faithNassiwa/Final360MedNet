@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
+{% extends "userprofile/emails/base_email2.html" %}
+{% load staticfiles %}
 
-<div>
-<div style="width: 90%">
-    <img src="https://scontent.fnbo2-1.fna.fbcdn.net/v/t1.0-9/21731125_863724417118963_5814779588087975518_n.jpg?oh=ab7
-    4a4ed18e81c17c5f90ff02439e24f&oe=5A5F8323">
-</div>
-<br>
-<div style="width: 90%">
+{% block headerimg %}
+    <img src="https://scontent.fnbo2-1.fna.fbcdn.net/v/t1.0-9/21731125_863724417118963_5814779588087975518_n.jpg?oh=ab74a4ed18e81c17c5f90ff02439e24f&oe=5A5F8323">
+{% endblock %}
+
+{% block content %}
     <br><br>Dear {{ doctor.first_name}},
 
     <p>Thank you for signing up to 360MedNet!</p>
 
-</div>
-<br>
-<div style="width: 90%">
     <p><h3><font color="#228b22">Below are your set login credentials.:</font></h3></p>
-
 
     Username: {{ user.username }}
     Password: {{ password }}
@@ -27,23 +20,90 @@
 
     Kind regards,
     360MedNet Support Team
+{% endblock %}
 
-</div>
-    <div style="width: 90%">
-         <div class="buttons-wrapper">
-          <div class="row center">
-              <a href="{{ domain }}/login" class="red waves-effect waves-yellow btn hoverable mg-rg"><b>Login Now</b>
-                  <i class="matergitial-icons right">bubble_chart</i></a>
-          </div>
-        </div>
-    </div>
-    <div style="width: 90%; background-color: #555555">
-        <p><font color="#f0fff0">This email is auto generated and cannot be replied to.
+{% block point1 %}
+{% endblock %}
+
+{% block point2 %}
+{% endblock %}
+
+{% block point3 %}
+{% endblock %}
+
+{% block signature %}
+    Kind regards,
+    360MedNet Support Team
+{% endblock %}
+
+{% block address %}
+    <p><font color="#f0fff0">This email is auto generated and cannot be replied to.
             <br>Please email info@360MedNet for any inquiries</font></p>
         <p><font color="#f0fff0">&copy 2018 360MedNet</font></p>
-    </div>
-</div>
+{% endblock %}
 
-</body>
 
-</html>
+{##}
+{#<html>#}
+{#<body>#}
+{##}
+{#<div>#}
+{#<div style="width: 90%">#}
+{#    <img src="https://scontent.fnbo2-1.fna.fbcdn.net/v/t1.0-9/21731125_863724417118963_5814779588087975518_n.jpg?oh=ab74a4ed18e81c17c5f90ff02439e24f&oe=5A5F8323">#}
+{#</div>#}
+{#<br>#}
+{#<div style="width: 90%">#}
+{#    <br><br>Dear {{ doctor.first_name}},#}
+{##}
+{#    <p>Thank you for signing up to 360MedNet!</p>#}
+{##}
+{#</div>#}
+{#<br>#}
+{#<div style="width: 90%">#}
+{#    <p><h3><font color="#228b22">Below are your set login credentials.:</font></h3></p>#}
+{##}
+{##}
+{#    Username: {{ user.username }}#}
+{#    Password: {{ password }}#}
+{#    email: {{ user.email }}#}
+{##}
+{#    <br><br>#}
+{##}
+{#    Kind regards,#}
+{#    360MedNet Support Team#}
+{##}
+{#</div>#}
+{#    <div style="width: 90%">#}
+{#         <div class="buttons-wrapper">#}
+{#          <div class="row center">#}
+{#              <a href="{{ domain }}/login" class="red waves-effect waves-yellow btn hoverable mg-rg"><b>Login Now</b>#}
+{#                  <i class="matergitial-icons right">bubble_chart</i></a>#}
+{#          </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div style="width: 90%; background-color: #555555">#}
+{#        <p><font color="#f0fff0">This email is auto generated and cannot be replied to.#}
+{#            <br>Please email info@360MedNet for any inquiries</font></p>#}
+{#        <p><font color="#f0fff0">&copy 2018 360MedNet</font></p>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#</body>#}
+{##}
+{#</html>#}
+
+{#Dear {{ doctor.first_name}},#}
+{##}
+{#Thank you for signing up to 360MedNet!#}
+{#(Welcome Image)#}
+{##}
+{#Below are your set login credentials.#}
+{#Username: {{ user.username }}#}
+{#Password: {{ password }}#}
+{#email: {{ user.email }}#}
+{##}
+{#To proceed to login, please click the link below:#}
+{#{{ domain }}/login#}
+{##}
+{#Kind regards,#}
+{#360MedNet Support Team#}

@@ -1,76 +1,111 @@
+{% extends "userprofile/emails/base_email.html" %}
+{% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<style>
-    .myButton {
-	background-color:blue;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:1px solid blue;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	padding:16px 31px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #000000;
-    }
-    .myButton:hover {
-	background-color:#b1dcfb;
-    }
-    .myButton:active {
-	position:relative;
-	top:1px;
-    }
-
-</style>
-</head>
-<body>
-<table>
-    <tr><td style="width: 30%"></td><td align="center">
+{% block headerimg %}
     <img src="https://360mednet.com/media/emails/textlogo2.png" style="width: 40%; height: 40%">
-        </td>
-        <td style="width: 30%"></td></tr>
-</table>
-<br>
-<table>
-    <tr><td style="width: 30%"></td><td align="left">
-Dear {{ doctor.first_name}},
-           </td><td style="width: 30%"></td></tr>
-</table>
+{% endblock %}
 
-<br>
+{% block content %}
+    Dear {{ doctor.first_name}},
 
-<table>
-    <tr><td style="width: 10%"></td><td align="left">
-<p>We are so glad you've chosen to be a part of the 360MedNet Community!
-</p></td></tr>
-<tr><td style="width: 10%"></td><td align="center"><img src="https://www.360mednet.com/media/emails/Doctors_networking_FB_cover_image_size-3.jpg"
-                          style="width: 80%; height: 80%"></td>
-        <td style="width: 10%"></td></tr>
-<tr><td>
-<br>You can now see what's happening in our Community.
-        </td>
-        <td style="width: 10%"></td></tr>
-</table>
+    <p>We are so glad you've chosen to be a part of the 360MedNet Community!</p>
+    <p><a href="https://360mednet.com/login" class="myButton" ><b>login</b></a></p>
+{% endblock %}
 
-<table>
-    <tr><td style="width: 45%"></td>
-        <td align="center"><p align="center">
-            <br><a href="https://360mednet.com/login" class="myButton" ><b>login</b></a></td><td style="width: 35%">
+{% block point1 %}
+{% endblock %}
 
-        </td></tr>
-</table>
+{% block point2 %}
+{% endblock %}
 
-<br>
-<table>
-    <tr><td style="width: 30%"></td><td align="left">
-<br>Kind regards,
-<br>360MedNet Team
-     </td><td style="width: 30%"></td></tr>
-</table>
-</body>
-</html>
+{% block point3 %}
+{% endblock %}
+
+{% block signature %}
+    <br>Kind regards,
+    <br>360MedNet Team
+{% endblock %}
+
+{% block adress %}
+    <p><font color="#f0fff0">This email is auto generated and cannot be replied to.
+            <br>Please email info@360MedNet for any inquiries</font></p>
+        <p><font color="#f0fff0">&copy 2018 360MedNet</font></p>
+{% endblock %}
+
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#<style>#}
+{#    .myButton {#}
+{#	background-color:blue;#}
+{#	-moz-border-radius:28px;#}
+{#	-webkit-border-radius:28px;#}
+{#	border-radius:28px;#}
+{#	border:1px solid blue;#}
+{#	display:inline-block;#}
+{#	cursor:pointer;#}
+{#	color:#ffffff;#}
+{#	font-family:Arial;#}
+{#	font-size:17px;#}
+{#	padding:16px 31px;#}
+{#	text-decoration:none;#}
+{#	text-shadow:0px 1px 0px #000000;#}
+{#    }#}
+{#    .myButton:hover {#}
+{#	background-color:#b1dcfb;#}
+{#    }#}
+{#    .myButton:active {#}
+{#	position:relative;#}
+{#	top:1px;#}
+{#    }#}
+{##}
+{#</style>#}
+{#</head>#}
+{#<body>#}
+{#<table>#}
+{#    <tr><td style="width: 30%"></td><td align="center">#}
+{#    <img src="https://360mednet.com/media/emails/textlogo2.png" style="width: 40%; height: 40%">#}
+{#        </td>#}
+{#        <td style="width: 30%"></td></tr>#}
+{#</table>#}
+{#<br>#}
+{#<table>#}
+{#    <tr><td style="width: 30%"></td><td align="left">#}
+{#Dear {{ doctor.first_name}},#}
+{#           </td><td style="width: 30%"></td></tr>#}
+{#</table>#}
+{##}
+{#<br>#}
+{##}
+{#<table>#}
+{#    <tr><td style="width: 10%"></td><td align="left">#}
+{#<p>We are so glad you've chosen to be a part of the 360MedNet Community!#}
+{#</p>#}
+{#    </td></tr>#}
+{#<tr><td style="width: 10%"></td><td align="center"><img src="https://www.360mednet.com/media/emails/Doctors_networking_FB_cover_image_size-3.jpg"#}
+{#                          style="width: 80%; height: 80%"></td>#}
+{#        <td style="width: 10%"></td></tr>#}
+{#<tr><td>#}
+{#<br>You can now see what's happening in our Community.#}
+{#        </td>#}
+{#        <td style="width: 10%"></td></tr>#}
+{#</table>#}
+{##}
+{#<table>#}
+{#    <tr><td style="width: 45%"></td>#}
+{#        <td align="center"><p align="center">#}
+{#            <br><a href="https://360mednet.com/login" class="myButton" ><b>login</b></a></td><td style="width: 35%">#}
+{##}
+{#        </td></tr>#}
+{#</table>#}
+{##}
+{#<br>#}
+{#<table>#}
+{#    <tr><td style="width: 30%"></td><td align="left">#}
+{#<br>Kind regards,#}
+{#<br>360MedNet Team#}
+{#     </td><td style="width: 30%"></td></tr>#}
+{#</table>#}
+{#</body>#}
+{#</html>#}
