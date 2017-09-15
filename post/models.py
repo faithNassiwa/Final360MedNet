@@ -1,6 +1,7 @@
 import datetime
-
+from django.core.mail import EmailMessage
 from django.db import models
+from django.template.loader import render_to_string
 from django.urls import reverse
 from userprofile.models import Doctor
 from django.contrib.auth.models import User
@@ -28,6 +29,15 @@ class Post(models.Model):
     def weekly_top_five_discussions(cls):
         date_diff = datetime.datetime.now() - datetime.timedelta(days=7)
         return cls.objects.filter(created_at__range=(date_diff, datetime.datetime.now())).order_by('-created_at')[:5]
+
+    @classmethod
+    def send_weekly_top_five_discussions(cls, subject_discussion, context, registered_doctor):
+        subject = subject_discussion.title
+        message = render_to_string('post/emails/post_email_update.html', context)
+        to_email1 = registered_doctor.user.email
+        email = EmailMessage(subject, message, to=[to_email1])
+        email.content_subtype = "html"
+        email.send()
 
 
 class Photo(models.Model):

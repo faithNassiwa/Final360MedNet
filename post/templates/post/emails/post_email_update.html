@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<style>
+    .myButton {
+	background-color:blue;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid blue;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+    }
+    .myButton:hover {
+	background-color:#b1dcfb;
+    }
+    .myButton:active {
+	position:relative;
+	top:1px;
+    }
+
+</style>
+</head>
+<body>
+Hello {{ doctor.first_name}},
+<br>
+<p>Discussion Updates!</p>
+
+<br>
+{% if weekly_top_five_discussions.count > 0 %}
+    <h2>Top Discussions</h2>
+{% for weekly_top_five_discussion in weekly_top_five_discussions %}
+    <h3><a href="{{ domain }}{% url 'post-detail' weekly_top_five_discussion.id %}">{{ weekly_top_five_discussion.title }}</a></h3>
+    {{ weekly_top_five_discussions.post_content }}
+{% endfor %}
+{% endif %}
+
+<br>
+
+<br>
+<br>Kind regards,
+<br>360MedNet Team
+</body>
+</html>

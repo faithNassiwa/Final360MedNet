@@ -12,11 +12,12 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm, MedicalCaseSearchForm
 from django.core.urlresolvers import reverse_lazy, reverse
-from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
 from post.models import Post
+from django.template import Context
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
+
+home = settings.SITE_HOST
 
 
 class MedicalCaseCreate(CreateView):
@@ -87,27 +88,33 @@ def send_top_five_medical_cases_weekly(request):
     subject_medical_case = MedicalCase.objects.last()
     weekly_top_five_discussions = Post.weekly_top_five_discussions()
     registered_doctors = Doctor.objects.all()
-    # registered_doctors_mailing_list = []
     for registered_doctor in registered_doctors:
-        # registered_doctors_mailing_list.append(registered_doctor.user.email) ## might need to accesss name of the docs
-
-        current_site = get_current_site(request)
-        subject = subject_medical_case.title
-        message = render_to_string('medicalcase/medicalcase_email_update.html', {
+        context = Context({
             'weekly_five_medical_cases': weekly_five_medical_cases,
             'weekly_top_five_discussions': weekly_top_five_discussions,
             'doctor': registered_doctor,
-            'domain': current_site.domain,
-
+            'domain': home,
         })
-        to_email1 = registered_doctor.user.email
-        email = EmailMessage(subject, message, to=[to_email1])
-        email.content_subtype = "html"
-        email.send()
+        MedicalCase.send_medical_cases(subject_medical_case,context, registered_doctor)
+        # registered_doctors_mailing_list.append(registered_doctor.user.email) ## might need to accesss name of the docs
+
+        # current_site = get_current_site(request)
+        # subject = subject_medical_case.title
+        # message = render_to_string('medicalcase/medical_case_email_update.html', {
+        #     'weekly_five_medical_cases': weekly_five_medical_cases,
+        #     'weekly_top_five_discussions': weekly_top_five_discussions,
+        #     'doctor': registered_doctor,
+        #     'domain': current_site.domain,
+        #
+        # })
+        # to_email1 = registered_doctor.user.email
+        # email = EmailMessage(subject, message, to=[to_email1])
+        # email.content_subtype = "html"
+        # email.send()
 
     return HttpResponse("Successfully sent")
 
 
 @login_required
 def view_medical_case_email(request):
-    return render(request, 'medicalcase/medicalcase_email_update.html')
+    return render(request, 'medicalcase/emails/medical_case_email_update.html')

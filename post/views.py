@@ -13,6 +13,10 @@ from event.models import Event
 from medicalcase.models import MedicalCase
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template import Context
+from django.conf import settings
+
+home = settings.SITE_HOST
 
 
 class PostCreate(CreateView):
@@ -134,4 +138,35 @@ def add_image_on_post(request, pk):
             image.doctor = Doctor.objects.get(user=request.user)
             image.save()
             return HttpResponseRedirect(reverse('post-detail', kwargs={'pk': pk}))
+
+
+@login_required
+def send_top_five_discussions_weekly(request):
+    subject_discussion = Post.objects.last()
+    weekly_top_five_discussions = Post.weekly_top_five_discussions()
+    registered_doctors = Doctor.objects.all()
+    for registered_doctor in registered_doctors:
+        context = Context({
+            'weekly_top_five_discussions': weekly_top_five_discussions,
+            'doctor': registered_doctor,
+            'domain': home,
+        })
+        Post.send_weekly_top_five_discussions(subject_discussion, context, registered_doctor)
+        # registered_doctors_mailing_list.append(registered_doctor.user.email) ## might need to accesss name of the docs
+        # current_site = get_current_site(request)
+        # subject = subject_medical_case.title
+        # message = render_to_string('medicalcase/medical_case_email_update.html', {
+        #     'weekly_five_medical_cases': weekly_five_medical_cases,
+        #     'weekly_top_five_discussions': weekly_top_five_discussions,
+        #     'doctor': registered_doctor,
+        #     'domain': current_site.domain,
+        #
+        # })
+        # to_email1 = registered_doctor.user.email
+        # email = EmailMessage(subject, message, to=[to_email1])
+        # email.content_subtype = "html"
+        # email.send()
+
+    return HttpResponse("Successfully sent")
+
 

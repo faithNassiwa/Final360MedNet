@@ -1,15 +1,11 @@
-from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
-from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.template.loader import render_to_string
 from django.urls import reverse
 from userprofile.models import Doctor
 from .forms import MedicInvitationForm, FriendInvitationForm, RegistrationForm1, RegistrationForm2, RegistrationForm3, \
-    RegistrationForm4, SuggestedInviteeForm
-from .models import Invitation, FriendInvitation, SuggestedInvitee
+    SuggestedInviteeForm
+from .models import Invitation, FriendInvitation
 from django.contrib.auth.models import User
 from userprofile.forms import DoctorForm, UserForm
 from django.contrib import messages
