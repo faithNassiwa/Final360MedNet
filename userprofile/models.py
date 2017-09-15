@@ -335,7 +335,7 @@ class Doctor(models.Model):
             settings.SITE_HOST,
             self.code
         )
-        template = get_template('invitation/invitation_email.html')
+        template = get_template('invitation/emails/invitation_email.html')
         context = Context({
             'name': self.name,
             'organization': self.organization,

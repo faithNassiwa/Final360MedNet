@@ -99,9 +99,7 @@ class RegistrationForm2(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(), label="Create Password")
     #username = forms.CharField(help_text=False)
     email = forms.EmailField(label="Email Address")
-    layout = Layout(email, password
-
-                    )
+    layout = Layout(email, password)
 
     class Meta:
         model = User
