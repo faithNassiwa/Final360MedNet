@@ -36,6 +36,7 @@ class EmailAuthenticationForm(AuthenticationForm):
                 )
         return username
 
+
 def home(request):
     return render(request, 'userprofile/home.html')
 

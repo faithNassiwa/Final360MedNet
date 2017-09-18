@@ -1,7 +1,9 @@
 {% extends "userprofile/home.html" %}
 {% load material_form %}
-{% block title_block %} {{ object.first_name }} {{ object.last_name }} | 360 MedNet {% endblock %}
-{% block content %}
+
+{% block title %} {{ object.first_name }} {{ object.last_name }} | 360 MedNet {% endblock %}
+
+{% block large %}
     <div class="row container ">
     <div class="card">
         <div class="card content ">

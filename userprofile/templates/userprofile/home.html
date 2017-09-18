@@ -1,96 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+ {% load static %}
      {% load material_form %}
-     {% load staticfiles %}
-        {% block head %}
+
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-        <title>{% block title_block %}{% endblock %}</title>
-        {% block favicon %}<link href="{% static 'static/website/favicon/favicon.png' %}">{% endblock %}
+
+        <link href="{% static 'static/website/favicon/favicon.ico' %}">
+        <title>{% block title %}{% endblock %}</title>
+
         {% block css %}{% include 'material/frontend/includes/material_css.html' %}{% endblock css %}
             <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
         {% block js %}{% include 'material/frontend/includes/material_js.html' %}{% endblock js %}
         {% block extrahead %}{% endblock %}
-        {% endblock head %}
-     {% load wysiwyg %}
-     {% wysiwyg_setup %}
 
-    </head>
-    <body class="{% block bodyclass %}with-sidebar{% endblock %}">
-        {% block body %}
+         {% load wysiwyg %}
+         {% wysiwyg_setup %}
+
+ </head>
+
+ <body class="with-sidebar">
         <header>
-            {% block header %}
+            <ul id="slide-out" class="side-nav fixed" style="font-size: small">
+            {% block sidenav %}
+                <div class="userView">
+                    <div align="center" >
 
-    <ul id="slide-out" class="side-nav fixed" style="font-size: small">
-    {% block sidenav %}
-        <div class="userView">
-            <div align="center" >
+                        <img src="{{ user.doctor.avatar.url }}" class="responsive-img img-fluid img-circle"
+                             style='max-height:150px;'>
+                        <span class="grey-text" style="font-size: small">
+                            <br>{{ user.doctor.first_name }} {{ user.doctor.last_name }}
+                            <br>{{ user.doctor.profession }} at {{ user.doctor.hospital }}
+                            <br>{{ user.doctor.country }}
+                        </span>
+                        <br><a href="{% url 'profile' user.get_username  %}"class="deep-orange-text">My Profile</a>
 
-                <img src="{{ user.doctor.avatar.url }}" class="responsive-img img-fluid img-circle"
-                     style='max-height:150px;'>
-                <span class="grey-text" style="font-size: small">
-                    <br>{{ user.doctor.first_name }} {{ user.doctor.last_name }}
-                    <br>{{ user.doctor.profession }} at {{ user.doctor.hospital }}
-                    <br>{{ user.doctor.country }}
-                </span>
-                <br><a href="{% url 'profile' user.get_username  %}"class="deep-orange-text">My Profile</a>
-
-            </div>
-         </div>
+                    </div>
+                 </div>
 
 
-        <div class="divider"></div>
-        <br>
-        <li><a href="{% url 'Post' %}" class="blue-grey-text"><i class="material-icons">mode_edit</i>Post on Forum</a></li>
-        <li><a href="{% url 'medical_cases' %}" class="blue-grey-text"><i class="material-icons">queue_play_next</i>
-            View Medical Cases</a></li>
-        <li><a href="{% url 'events' %}" class="blue-grey-text"><i class="material-icons">insert_invitation</i>
-            Events & Conferences</a></li>
-        <br>
-        <div class="divider"></div>
+                <div class="divider"></div>
+                <br>
+                <li><a href="{% url 'Post' %}" class="blue-grey-text"><i class="material-icons">mode_edit</i>
+                    Post on Forum</a></li>
+                <li><a href="{% url 'all-discussions' %}" class="blue-grey-text"><i class="material-icons">
+                                            insert_invitation</i>Discussion Forum</a>
+                <li><a href="{% url 'medical_cases' %}" class="blue-grey-text"><i class="material-icons">queue_play_next</i>
+                    View Medical Cases</a></li>
+                <li><a href="{% url 'suggest-doctor' %}" class="blue-grey-text"><i class="material-icons">
+                                            mode_edit</i>Suggest Health Professional</a></li>
+                <li><a href="{% url 'events' %}" class="blue-grey-text"><i class="material-icons">insert_invitation</i>
+                    Events & Conferences</a></li>
 
-        <br>
-        <div align="center">
-		<a href="{% url 'logout' %}" class="btn red waves-effect waves-yellow" type="logout" name="_logout">Logout
-        <i class="material-icons right">phonelink_lock</i>
-        </a>
-       </div>
-        <br>
+                <br>
+                <div class="divider"></div>
 
-        <p align="center" style="font-size: x-small">info@360mednet.com | +256-000-000</p>
-        <p align="center" style="font-size: x-small"><a href="{% url 'about_us' %}">About us</a> &nbsp| &nbsp
-            <a href="{% url 'help' %}">Help</a> &nbsp| &nbsp <a href="{% url 'terms_of_use' %}">Terms</a> &nbsp| &nbsp
-            <a href="{% url 'privacy_policy' %}">Privacy</a></p>
-        <p align="center" style="font-size: x-small">2017 &copy; 360MedNet</p>
-    </ul>
-
-        {% endblock %}
-
+                <br>
+                <div align="center">
+                <a href="{% url 'logout' %}?next={% url 'login' %}" class="btn red waves-effect waves-yellow" type="logout" name="_logout">Logout
+                <i class="material-icons right">phonelink_lock</i>
+                </a>
+               </div>
+                <br>
+            </ul>
             {% endblock %}
         </header>
         <main>
-            {% block main %}
                 <div class="navbar-fixed">
                     <nav>
-{#                        <div class="container">#}
                       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
                             <div class="nav-wrapper" style="max-width:70%">
                                     <a href="{% url 'posts' %}"><img src="{% static 'userprofile/images/textlogohome.png' %}"
                                         style='max-height:55px;padding-top:5px;'></a>
                             </div>
-                          </nav>
+                    </nav>
                 </div>
-{#                <div class="hide-on-med-and-up" style="background-color: steelblue; height:50px; position: static;"></div>#}
                 {% block content %}
 
                     <div class="row">
 
                       <div class="col s12 m8 l9" style="font-size: small">
                         {% block large %}
-                             {% endblock large %}
+                        {% endblock large %}
                       </div>
 
                       <div class="col s12 m4 l3" style="font-size: small">
@@ -113,33 +108,8 @@
                                                 </span>
                                             </div>
                                         {% endfor %}
-{#                                        <div class="col l4 m4 s4">#}
-{#                                            <span class="centred">#}
-{#                                                <a onclick="showPopup('popup1');">#}
-{#                                                    JAN#}
-{#                                                    <span class="chip" style="color: #f44336">4</span>#}
-{#                                                </a>#}
-{#                                            </span>#}
-{#                                        </div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">FEB</a></span></div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">MAR</a></span></div>#}
-{#                                    </div>#}
-{#                                    <div class="row">#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">APR</a></span></div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">MAY</a></span></div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred current"><a onclick="showPopup('popup');">JUN<span class="chip" style="color: #f44336">2</span></a></span></div>#}
-{#                                    </div>#}
-{#                                    <div class="row">#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">JUL</a></span></div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">AUG</a></span></div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">SEP</a></span></div>#}
-{#                                    </div>#}
-{#                                    <div class="row">#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">OCT</a></span></div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">NOV</a></span></div>#}
-{#                                        <div class="col l4 m4 s4"><span class="centred"><a onclick="showPopup('popup');">DEC</a></span></div>#}
-{#                                    </div>#}
-                                </div>
+
+                                    </div>
                               </div>
 
                               <br><br>
@@ -148,17 +118,6 @@
 
                               <br><br>
 
-
-                                <div class="card col s12 m12 l12">
-                                <ul>
-                                    <li><a href="{% url 'friend_invite' %}" class="blue-grey-text"><i class="material-icons">
-                                        queue_play_next</i>&nbsp;&nbsp;&nbsp;&nbsp; Invite Friend</a></li>
-                                    <li><a href="{% url 'suggest-doctor' %}" class="blue-grey-text"><i class="material-icons">
-                                        mode_edit</i>&nbsp;&nbsp;&nbsp;&nbsp;Suggest Doctor</a></li>
-                                    <li><a href="{% url 'all-discussions' %}" class="blue-grey-text"><i class="material-icons">
-                                        insert_invitation</i>&nbsp;&nbsp;&nbsp;&nbsp;Discussion Forum</a></li>
-                                </ul>
-                                </div>
 
                               <div class="card col l12">
                                 <div class="card-image">
@@ -167,32 +126,44 @@
                                 <div class="card-content">
                                 <span class="deep-orange-text">New Doctors</span>
                                   {% if top_five_latest_medics %}
-                                          <ul class="cyan-text">
-                                              {% for medic in top_five_latest_medics %}
-                                                  <li>Dr. {{ medic.first_name }} {{ medic.last_name }}</li>
-{#                                                  <li><a href="{% url 'doctor-detail' doctor.id %}">#}
-{#                                                      Dr. {{ user.doctor.first_name }} {{ user.doctor.last_name }}</a></li>#}
-                                             {% endfor %}
-                                    </ul>
-                                        {% else %}
-                                        <br><span class="red-text">No New Medics.</span>
-                                    {% endif %}
+                                      <ul class="cyan-text">
+                                          {% for medic in top_five_latest_medics %}
+                                              <li>Dr. {{ medic.first_name }} {{ medic.last_name }}</li>
+                                          {% endfor %}
+                                        </ul>
+                                  {% else %}
+                                      <br><span class="red-text">No New Medics.</span>
+                                  {% endif %}
                                 </div>
                               </div>
 
+                              <br>
+                              <div class="card col s12 m12 l12">
+                              <div class="card-image">
+                                  <img  src="{% static 'userprofile/images/cardhdr.png' %}">
+                                </div>
+                                  <ul>
+                                      <p align="center" style="font-size: small"><a href="{% url 'about_us' %}">About us</a> &nbsp| &nbsp
+                                            <a href="{% url 'help' %}">Help</a> &nbsp| &nbsp <a href="{% url 'terms_of_use' %}">Terms</a> &nbsp| &nbsp
+                                            <a href="{% url 'privacy_policy' %}">Privacy</a></p>
+                                      <p align="center" style="font-size: small">&copy; 2017 360MedNet</p>
+                                      <br>
+                                    </ul>
+                              </div>
 
-                          {% endblock thin %}
-                      </div>
+
+                          {% endblock  %}
+                        </div>
+                    </div>
                     </div>
 
                     {% endblock %}
 
-            {% endblock main %}
         </main>
 
-        {% endblock %}
 
-                           <div class="col l12 m12 s12 popup" id="popup1">
+
+        <div class="col l12 m12 s12 popup" id="popup1">
           <div class="card card blue-grey darken-1 card-content white-text">
             <div class="card-content">
                 <table>
@@ -270,6 +241,6 @@
         </div>
 
         <br>
-    </body>
+ </body>
     {% wysiwyg_editor "id_post_content" %}
 </html>

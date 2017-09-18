@@ -3,7 +3,7 @@ from post import views as post_views
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    url(r'^post/$', login_required(post_views.PostCreate.as_view()), name='Post'),
+    url(r'^post/discussion/$', login_required(post_views.PostCreate.as_view()), name='Post'),
     url(r'^post/detail/(?P<pk>[0-9]+)/$', login_required(post_views.PostDetail.as_view()), name='post-detail'),
     url(r'^feed/$', login_required(post_views.Posts.as_view()), name='posts'),
     url(r'^discussions/$', login_required(post_views.PostList.as_view()), name='all-discussions'),

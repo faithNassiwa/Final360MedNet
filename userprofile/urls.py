@@ -28,7 +28,7 @@ urlpatterns = [
         name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete,
         {'template_name': 'userprofile/password_reset_complete.html'}, name='password_reset_complete'),
-    url(r'^logout/$', auth_views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^(?P<pk>[0-9]+)/detail/$', login_required(user_views.DoctorDetail.as_view()),
         name='doctor-detail'),
     url(r'^home/$', user_views.home, name='home'),

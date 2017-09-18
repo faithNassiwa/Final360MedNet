@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^signup/1/$', invitation_views.registration_one, name='reg_1'),
     url(r'^signup/2/$', invitation_views.registration_two, name='reg_2'),
     url(r'^signup/complete/$', invitation_views.done, name='finished'),
-    url(r'^suggest/doctor/$', invitation_views.send_suggested_invitee, name='suggest-doctor'),
+    url(r'^suggest/health-professional/$', invitation_views.send_suggested_invitee, name='suggest-doctor'),
 ]

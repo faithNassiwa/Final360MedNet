@@ -62,6 +62,7 @@ def bulk_invite(request):
     return HttpResponse('Successfully invited %s medics via email' % invited_medics)
 
 
+@staff_member_required
 def invite_friend(request):
     if request.method == 'POST':
         form = FriendInvitationForm(request.POST)

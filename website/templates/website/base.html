@@ -1,12 +1,17 @@
 <!DOCTYPE html>
   <html>
     <head>
-          {% load static %}
+        {% load static %}
 
 
-        <meta charset="UTF-8">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="shortcut icon" type="image/png" href="{% static 'static/website/favicon/favicon.png' %}"/>
+        <meta name="description" content="360MedNet is a networking platform for health professionals in Africa.">
+        <meta name="author" content="360MedNetInc">
+
+        <link rel="shortcut icon" href="{%  static 'static/website/favicon/favicon.ico' %}">
         <title>{% block title %} {% endblock %}</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -35,114 +40,139 @@
               margin-right: 1rem;
               margin-left: 1rem;
               margin-top: 1rem;
+            }
             </style>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     </head>
 
-    <body>
-	<nav>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    <body style="display: flex; min-height: 100vh; flex-direction: column;">
 
-    <div class="nav-wrapper">
-	<div class="container" style="width: 80%;">
-	   <ul class="left">
-            <li><a href="{% url 'verify' %}"><img src="{% static 'userprofile/images/textlogo.png' %}"
-                                        style='max-height:55px;padding-top:5px;'></a></li>
-        </ul>
+        <header>
+            <nav style="height: 82px">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
-      <ul class="right hide-on-med-and-down">
+                <div class="nav-wrapper">
+                    <div class="container" style="width: 80%;">
+                        <ul class="left">
+                            <li><a href="{% url 'verify' %}"><img src="{% static 'userprofile/images/textlogo.png' %}"
+                                                            style='max-height:55px;padding-top:5px;'></a></li>
+                        </ul>
 
-          <li><a href="{% url 'about_us' %}">About Us</a></li>
-            <li><a href="{% url 'verify' %}">Help</a></li>
-            <li><a href="{% url 'login' %}"><font color="#faebd7"><i class="material-icons right">input</i>Login</font></a></li>
-            <li><a href="{% url 'join' %}"><font color="#7fffd4" size="4em"><i class="material-icons right">bubble_chart</i>Sign Up</font></a></li>
-        </ul>
+                        <ul class="right hide-on-med-and-down">
 
-	  <ul id="slide-out" class="side-nav">
-    <li>
-        <div align="center">
-          <img src="{% static 'userprofile/images/../../static/website/favicon/favicon.png' %}" class="responsive-img" style="max-width: 180px">
-        </div>
-        </li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Menu</a></li>
-    <li><a href="{% url 'about_us' %}"><i class="material-icons">view_stream</i>About Us</a></li>
-    <li><a href="{% url 'privacy_policy' %}"><i class="material-icons">view_stream</i>Privacy Policy</a></li>
-    <li><a href="{% url 'terms_of_use' %}"><i class="material-icons">mode_edit</i>Terms of Use</a></li>
-	<li><a href="{% url 'help' %}"><i class="material-icons">today</i>Help</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Account</a></li>
-    <li><a class="waves-effect" href="{% url 'login' %}"><font color="#ff7f50"><i class="material-icons right">input</i>Login</font></a></li>
-    <li><a class="waves-effect" href="{% url 'join' %}"><font color="#008b8b" size="3em"><i class="material-icons right">bubble_chart</i>Sign Up</font></a></li>
-    <li><div class="divider"></div></li>
-      <li>
-        <div align="center">
-          <br><font color="#4682b4" size="2em">&copy 2017 360MedNet All rights reserved.</font>
-        </div>
-    </li>
-</ul>
-	  </div>
-    </div>
-    </nav>
-    {% block content %}
+                            <li><a href="{% url 'about_us' %}">About Us</a></li>
+                            <li><a href="{% url 'verify' %}">Help</a></li>
+                            <li><a href="{% url 'login' %}"><font color="#faebd7"><i class="material-icons right">input
+                            </i>Login</font></a></li>
+                            <li><a href="{% url 'join' %}"><font color="#7fffd4" size="4em">
+                                <i class="material-icons right">bubble_chart</i>Sign Up</font></a></li>
+                        </ul>
 
-    {% endblock %}
-	<footer class="page-footer">
+                        <ul id="slide-out" class="side-nav">
+                            <li>
+                                <div align="center">
+                                  <img src="{% static 'userprofile/images/../../static/website/favicon/favicon.ico' %}"
+                                       class="responsive-img" style="max-width: 180px">
+                                </div>
+                            </li>
+                            <li><div class="divider"></div></li>
+                            <li><a class="subheader">Menu</a></li>
+                            <li><a href="{% url 'about_us' %}"><i class="material-icons">view_stream</i>About Us</a>
+                            </li>
+                            <li><a href="{% url 'privacy_policy' %}"><i class="material-icons">view_stream</i>Privacy
+                                Policy</a></li>
+                            <li><a href="{% url 'terms_of_use' %}"><i class="material-icons">mode_edit</i>Terms of Use
+                            </a></li>
+                            <li><a href="{% url 'help' %}"><i class="material-icons">today</i>Help</a></li>
+                            <li><div class="divider"></div></li>
+                            <li><a class="subheader">Account</a></li>
+                            <li><a class="waves-effect" href="{% url 'login' %}"><font color="#ff7f50">
+                                <i class="material-icons right">input</i>Login</font></a></li>
+                            <li><a class="waves-effect" href="{% url 'join' %}"><font color="#008b8b" size="3em">
+                                <i class="material-icons right">bubble_chart</i>Sign Up</font></a></li>
+                            <li><div class="divider"></div></li>
+                            <li>
+                                <div align="center">
+                                  <br><font color="#4682b4" size="2em">&copy 2017 360MedNet All rights reserved.</font>
+                                </div>
+                            </li>
+                        </ul>
+                      </div>
+                </div>
+            </nav>
+        </header>
 
-          <div class="container">
+        <main style="flex: 1 0 auto;">
+            {% block content %}
+            {% endblock %}
+        </main>
 
-            <div class="row">
-              <div class="col l3 m3 s12">
-                <img src="{% static 'userprofile/images/logo2.png' %}" width="150">
+        <footer class="page-footer">
+
+              <div class="container">
+
+                <div class="row">
+                  <div class="col l4 m4 s12">
+                    <img src="{% static 'userprofile/images/logo2.png' %}" width="150">
+                  </div>
+                    <div class="col l4 m4 s12">
+                        <br><br>
+                        <ul>
+                            <li><a style="color: white" href="https://www.facebook.com/360MedNet-832252040266201/">
+                                <i class="fa fa-facebook fa-lg"></i> &nbsp;</a> &nbsp;
+                                <a style="color: white" href="#!"><i class="fa fa-twitter fa-lg"></i>&nbsp;</a>
+                                &nbsp;
+                                <a style="color: white" href="#!"><i class="fa fa-youtube-play fa-lg"></i>&nbsp;</a>
+                                &nbsp;
+                                <a style="color: white" href="https://www.linkedin.com/company-beta/18147086/">
+                                <i class="fa fa-linkedin fa-lg"></i>&nbsp;</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col l4 m4 s12">
+                        <br>
+                        <ul>
+                            <li><a style="color: white" href="#!"><i class="material-icons">room</i>&nbsp; Jerrifer
+                                House, Nabunya road, Rubaga</a></li>
+                            <li><a style="color: white" href="#!"><i class="material-icons">phone</i>&nbsp;+256 782
+                                764739</a></li>
+                            <li><a style="color: white" href="#!"><i class="material-icons">email</i>&nbsp;
+                                info@360mednet.com</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
               </div>
-                <div class="col l6 m6 s12">
-                    <ul>
-                        <li><a href="#!"><i class="material-icons">phone</i>&nbsp&nbsp+256 782 764739</a></li>
-                        <li><a href="#!"><i class="material-icons">email</i>&nbsp&nbspinfo@360mednet.com</a></li>
-                        <li><a href="#!"><i class="material-icons">room</i>&nbsp&nbspJerrifer House, Nabunya road, Rubaga</a></li>
-
-                    </ul>
+              <div class="footer-copyright">
+                <div class="container">
+                © 2017 360MedNet
+                        <a class="grey-text text-lighten-4 right"href="{% url 'help' %}">Help</a>
+                        <a class="grey-text text-lighten-4 right"href="{% url 'terms_of_use' %}">Terms of Use &nbsp | &nbsp</a>
+                        <a class="grey-text text-lighten-4 right"href="{% url 'privacy_policy' %}">Privacy Policy &nbsp | &nbsp</a>
+                </div>
               </div>
-                <div class="col l3 m3 s12">
-                    <ul>
-                        <li><a href="https://www.facebook.com/360MedNet-832252040266201/">
-                            <i class="fa fa-facebook fa-lg"></i>&nbsp&nbsp Facebook</a></li>
-                        <li><a href="#!"><i class="fa fa-twitter fa-lg"></i>&nbsp&nbsp Twitter</a></li>
-                        <li><a href="#!"><i class="fa fa-youtube-play fa-lg"></i>&nbsp&nbsp Youtube</a></li>
-                        <li><a href="https://www.linkedin.com/company-beta/18147086/">
-                            <i class="fa fa-linkedin fa-lg"></i>&nbsp&nbsp LinkedIn</a></li>
-                    </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2017 360MedNet
-                <a class="grey-text text-lighten-4 right"href="{% url 'help' %}">Help</a>
-                 <a class="grey-text text-lighten-4 right"href="{% url 'terms_of_use' %}">Terms of Use &nbsp | &nbsp</a>
-                <a class="grey-text text-lighten-4 right"href="{% url 'privacy_policy' %}">Privacy Policy &nbsp | &nbsp</a>
-            </div>
-          </div>
         </footer>
 
-      <!--Import jQuery before materialize.js-->
+          <!--Import jQuery before materialize.js-->
 
-	  <script>
-		$('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 300
-      edge: 'left', // Choose the horizontal origin
-      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: false // Choose whether you can drag to open on touch screens
-    }
-  );
-		$(document).ready(function(){
-      $('.slider').slider();
-    });
-		 $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-	  </script>
+          <script>
+            $('.button-collapse').sideNav({
+          menuWidth: 300, // Default is 300
+          edge: 'left', // Choose the horizontal origin
+          closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+          draggable: false // Choose whether you can drag to open on touch screens
+        }
+      );
+            $(document).ready(function(){
+          $('.slider').slider();
+        });
+             $(document).ready(function(){
+          $('.parallax').parallax();
+        });
+          </script>
 
 
     </body>

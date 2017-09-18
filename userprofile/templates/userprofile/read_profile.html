@@ -1,11 +1,11 @@
 {% extends "userprofile/home.html" %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% if user.is_authenticated %}
-{% block title_block %} Dr. {{ user.doctor.first_name }} {{ user.doctor.last_name }} | 360 MedNet {% endblock %}
+{% block title %} Dr. {{ user.doctor.first_name }} {{ user.doctor.last_name }} | 360 MedNet {% endblock %}
 
-{% block content %}
+{% block large %}
     <br>
 <div class="card">
 <div class="row container ">
@@ -26,29 +26,25 @@
                 </tr></table>
 
         <br><div class="divider"></div>
-{#        <img src="{{ read_profile.avatar.url }}" width = "150" height = "150"  />#}
-{#        <br><div class="divider"></div>#}
+
         <br> About me:<br><font color="#4682b4">{{ read_profile.about_me }}</font><br><br><br>
         <br><div class="divider"></div><br>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>First Name :</div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.first_name }}</div></font>
+
+        <div class="container">
+        <div class="row ">
+            <h6>First Name : &nbsp; {{ read_profile.first_name }}</h6>
         </div>
         <div class="row">
-            <div class="col s12 m3 l4"><h6>Last Name :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.last_name }}</div></font>
+            <h6>Last Name :  &nbsp;{{ read_profile.last_name }}</h6>
         </div>
         <div class="row">
-            <div class="col s12 m3 l4"><h6>Middle Name :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.middle_name }}</div></font>
+            <h6>Middle Name : &nbsp; {{ read_profile.middle_name }}</h6>
         </div>
         <div class="row">
-            <div class="col s12 m3 l4"><h6>Gender :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.gender }}</div></font>
+            <h6>Gender :  &nbsp; {{ read_profile.gender }}</h6>
         </div>
         <div class="row">
-            <div class="col s12 m3 l4"><h6>Date of Birth :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.date_of_birth }}</div></font>
+            <h6>Date of Birth : &nbsp; {{ read_profile.date_of_birth }}</h6>
         </div>
         <div class="row">
             <div class="col s12 m3 l4"><h6>Qualification <a class="button" href="{% url 'add_qualification' %}">Add</a></h6></div>
@@ -94,6 +90,7 @@
         <div class="row">
             <div class="col s12 m3 l4"><h6>Work Telephone :</h6></div>
             <font color="#4682b4"><div class="col s12 m5 l6">{{ read_profile.work_number }}</div></font>
+        </div>
         </div>
 
         <br><br>
