@@ -2,16 +2,16 @@
 {% load staticfiles %}
 {% load material_form %}
 
-{% block title_block %}360MedNet{% endblock %}
+{% block title %}Signup | 360MedNet{% endblock %}
 
 {% block content %}
 <br>
 
     <div class ="container">
-    <div class="card blue-grey darken-1 card-content white-text">
+    <div class="card card-content ">
     <div class="container" style="text-align: center">
     <br>
-        <p class="flow-text" align="center">Request to join the Community</p>
+        <p class="flow-text" align="center" style="font-size: xx-large">Request to join the Community</p>
       <div class="row">
       {% if messages %}
       <ul class="messages">
@@ -25,9 +25,10 @@
        <form method="post" class="viewform">
         {% csrf_token %}
        {% form form=form %}
-           {% part form.alternative_email prefix %}<i class="material-icons prefix">email</i>{% endpart %}
-        {% part form.surname prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
-        {% part form.other_name prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+            {% part form.alternative_email prefix %}<i class="material-icons prefix">email</i>{% endpart %}
+            {% part form.surname prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+            {% part form.other_name prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+            {% part form.organization prefix %}<i class="material-icons prefix">business</i>{% endpart %}
     {% endform %}
        <br>
        <div class="submit col s12">
