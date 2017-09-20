@@ -14,4 +14,7 @@ urlpatterns = [
     url(r'^signup/2/$', invitation_views.registration_two, name='reg_2'),
     url(r'^signup/complete/$', invitation_views.done, name='finished'),
     url(r'^suggest/health-professional/$', invitation_views.send_suggested_invitee, name='suggest-doctor'),
+    url(r'^invite_email/$', invitation_views.invite_email),
+    url(r'^sign_up_email/$', invitation_views.sign_up),
+    url(r'^thank_you_signup_email/$', invitation_views.thank_you_signup),
 ]

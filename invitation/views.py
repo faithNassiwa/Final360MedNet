@@ -200,3 +200,15 @@ def send_suggested_invitee(request):
                                               "verified." % instance.name)
 
     return render(request, 'invitation/suggest_invitee.html', locals())
+
+
+def invite_email(request):
+    return render(request, 'invitation/emails/invitation_email.html')
+
+
+def sign_up(request):
+    return render(request, 'invitation/emails/signup_email.html')
+
+
+def thank_you_signup(request):
+    return render(request, 'invitation/emails/thank_you_signup_email.html')
