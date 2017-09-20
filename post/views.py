@@ -77,7 +77,26 @@ class PostList(ListView):
             posts = paginator.page(1)
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
-        context = {'all_posts': all_posts}
+
+        top_five_latest_medical_cases = MedicalCase.objects.order_by('-created_at')[:5]
+        top_five_latest_events = Event.objects.order_by('-created_on')[:5]
+
+        top_five_latest_posts = Post.objects.order_by('-created_on')[:5]
+        context = {'top_five_latest_medical_cases': top_five_latest_medical_cases,
+                   'top_five_latest_events': top_five_latest_events, 'top_five_latest_posts': top_five_latest_posts}
+
+        # get events
+        all_events = Event.objects.all()
+        months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+        month_events = {}
+        ii = 1
+        for month in months:
+            month_events[month] = Event.objects.filter(start__month=ii).count()
+            ii += 1
+
+        context = {'all_posts': all_posts, 'top_five_latest_medical_cases': top_five_latest_medical_cases,
+                   'top_five_latest_events': top_five_latest_events, 'all_events': all_events,
+                   'month_events': month_events}
 
         return self.response_class(request=self.request, template=self.get_template_names(), context=context,
                                    using=self.template_engine)

@@ -184,7 +184,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 ORGS_SLUGFIELD = 'django_extensions.db.fields.AutoSlugField'
 
-LOGIN_REDIRECT_URL = '/feed'
+LOGIN_REDIRECT_URL = '/discussions'
 
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 MAILGUN_ACCESS_KEY = config('MAILGUN_ACCESS_KEY')
