@@ -310,7 +310,7 @@ class Doctor(models.Model):
     city = models.CharField(max_length=30, blank=True, null=True)
     hospital = models.CharField(max_length=30, blank=True, null=True)
     work_number = models.CharField(max_length=30, blank=True, null=True)
-    avatar = models.ImageField(upload_to="avatars", default='avatars/none/default.jpeg', height_field=None,
+    avatar = models.ImageField(upload_to="avatars", default='avatars/default.jpeg', height_field=None,
                                width_field=None, blank=True, null=True)
     website = models.URLField(blank=True, null=True)
     invitation_code = models.CharField(max_length=17, blank=True, null=True)

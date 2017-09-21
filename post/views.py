@@ -38,10 +38,9 @@ class Posts(ListView):
     def render_to_response(self, context, **response_kwargs):
         top_five_latest_medical_cases = MedicalCase.objects.order_by('-created_at')[:5]
         top_five_latest_events = Event.objects.order_by('-created_on')[:5]
-
         top_five_latest_posts = Post.objects.order_by('-created_on')[:5]
-        context = {'top_five_latest_medical_cases': top_five_latest_medical_cases,
-                   'top_five_latest_events': top_five_latest_events, 'top_five_latest_posts': top_five_latest_posts}
+        top_five_latest_medical_professionals = Doctor.objects.order_by('-created_at')[:5]
+
 
         # get events
         all_events = Event.objects.all()
@@ -54,7 +53,8 @@ class Posts(ListView):
 
         context = {'top_five_latest_medical_cases': top_five_latest_medical_cases,
                    'top_five_latest_events': top_five_latest_events, 'all_events': all_events,
-                   'month_events': month_events}
+                   'month_events': month_events, 'top_five_latest_posts':top_five_latest_posts,
+                   'top_five_latest_medical_professionals': top_five_latest_medical_professionals}
 
         return self.response_class(request=self.request, template=self.get_template_names(), context=context,
                                    using=self.template_engine)
@@ -80,10 +80,9 @@ class PostList(ListView):
 
         top_five_latest_medical_cases = MedicalCase.objects.order_by('-created_at')[:5]
         top_five_latest_events = Event.objects.order_by('-created_on')[:5]
-
         top_five_latest_posts = Post.objects.order_by('-created_on')[:5]
-        context = {'top_five_latest_medical_cases': top_five_latest_medical_cases,
-                   'top_five_latest_events': top_five_latest_events, 'top_five_latest_posts': top_five_latest_posts}
+        top_five_latest_medical_professionals = Doctor.objects.order_by('-created_at')[:5]
+
 
         # get events
         all_events = Event.objects.all()
@@ -96,7 +95,8 @@ class PostList(ListView):
 
         context = {'all_posts': all_posts, 'top_five_latest_medical_cases': top_five_latest_medical_cases,
                    'top_five_latest_events': top_five_latest_events, 'all_events': all_events,
-                   'month_events': month_events}
+                   'month_events': month_events, 'top_five_latest_posts':top_five_latest_posts,
+                   'top_five_latest_medical_professionals': top_five_latest_medical_professionals}
 
         return self.response_class(request=self.request, template=self.get_template_names(), context=context,
                                    using=self.template_engine)

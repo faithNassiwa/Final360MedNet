@@ -20,6 +20,8 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from invitation.models import Invitation
+from userprofile.models import Doctor
+from event.models import *
 
 
 class EmailAuthenticationForm(AuthenticationForm):
@@ -38,7 +40,20 @@ class EmailAuthenticationForm(AuthenticationForm):
 
 
 def home(request):
-    return render(request, 'userprofile/home.html')
+    top_five_latest_medical_professionals = Doctor.objects.order_by('-created_at')[:5]
+    # get events
+    all_events = Event.objects.all()
+    months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+    month_events = {}
+    ii = 1
+    for month in months:
+        month_events[month] = Event.objects.filter(start__month=ii).count()
+        ii += 1
+
+    context = {'top_five_latest_medical_professionals': top_five_latest_medical_professionals, 'all_events': all_events,
+               'month_events': month_events}
+
+    return render(request, 'userprofile/home.html', locals())
 
 
 def signup(request):

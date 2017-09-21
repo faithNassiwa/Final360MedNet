@@ -127,8 +127,8 @@
                                 <span class="deep-orange-text">New Doctors</span>
                                   {% if top_five_latest_medics %}
                                       <ul class="cyan-text">
-                                          {% for medic in top_five_latest_medics %}
-                                              <li>Dr. {{ medic.first_name }} {{ medic.last_name }}</li>
+                                          {% for medic in top_five_latest_medical_professionals %}
+                                              <li>{{ medic.first_name }} {{ medic.last_name }}</li>
                                           {% endfor %}
                                         </ul>
                                   {% else %}
