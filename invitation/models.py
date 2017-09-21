@@ -56,9 +56,15 @@ class Invitation(models.Model):
         msg.send()
 
     @classmethod
-    def send_signup_email(cls, context, invitation_code):
+    def send_signup_email(cls, first_name, invitation_code):
         subject = 'Welcome to 360MedNet.'
-        html_content = render_to_string('invitation/emails/signup_email.html', context)
+
+        context = Context({
+            'name': first_name
+
+        })
+
+        html_content = render_to_string('invitation/emails/thank_you_signup1_email.html', context)
         text_content = strip_tags(html_content)
 
         message = html_content

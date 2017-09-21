@@ -30,8 +30,8 @@ def invite_user(request):
                 code=User.objects.make_random_password(6)
             )
             if invitation.email:
-                invitation.save()
                 invitation.send_invite()
+                invitation.save()
                 messages.success(request,
                                  message='Invitation successfully sent to %s.' %
                                          invitation.email
@@ -139,11 +139,10 @@ def registration_one(request):
             request.session['first_name'] = form.cleaned_data['first_name']
             request.session['last_name'] = form.cleaned_data['last_name']
             request.session['invitation_code'] = form.cleaned_data['invitation_code']
-            context = Context({
-                'first_name': request.session['first_name'],
-                'domain': home})
+            first_name = request.session['first_name']
 
-            Invitation.send_signup_email(context, request.session['invitation_code'])
+            # Invitation.send_signup_email(first_name,  request.session.get('invitation_code', None))
+            Invitation.objects.filter(code=request.session['invitation_code']).update(accepted=True)
             return HttpResponseRedirect(reverse('reg_2'))
     return render(request, 'invitation/registration_one.html', {'form': form})
 
@@ -207,7 +206,7 @@ def invite_email(request):
 
 
 def sign_up(request):
-    return render(request, 'invitation/emails/signup_email.html')
+    return render(request, 'invitation/emails/signup1_email.html')
 
 
 def thank_you_signup(request):
