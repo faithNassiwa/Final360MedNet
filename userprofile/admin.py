@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Record, Medic, Doctor, Profession, Specialization, Qualification, MedicEmail
+from .models import Record, Medic, Doctor, Profession, Specialization, Qualification, MedicEmail, DefaultImage
 
 
 class RecordAdmin(admin.ModelAdmin):
@@ -31,6 +31,12 @@ class QualificationAdmin(admin.ModelAdmin):
     list_filter = ['created_at']
     search_fields = ['qualification', 'university']
 
+
+class DefaultImageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'image', 'created_on', 'updated_on')
+    list_filter = ['created_on']
+    search_fields = ['name', 'id']
+
 admin.site.register(Record, RecordAdmin)
 admin.site.register(Medic)
 admin.site.register(MedicEmail)
@@ -38,3 +44,4 @@ admin.site.register(Doctor, DoctorAdmin)
 admin.site.register(Profession, ProfessionAdmin)
 admin.site.register(Specialization, SpecializationAdmin)
 admin.site.register(Qualification, QualificationAdmin)
+admin.site.register(DefaultImage, DefaultImageAdmin)

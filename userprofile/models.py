@@ -501,3 +501,9 @@ class MedicEmail(models.Model):
     def __str__(self):
         return self.name
 
+
+class DefaultImage(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="avatars", blank=True, null=True)
+    created_on = models.DateTimeField(auto_now=False, auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True, auto_now_add=False)
