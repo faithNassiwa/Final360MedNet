@@ -86,6 +86,18 @@ class SocialSiteForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
+    layout = Layout(Fieldset('Personal details',
+                             Row('first_name', 'middle_name', 'last_name'),
+                             Row('gender', 'date_of_birth'), 'about_me', 'mobile_number',
+                             ),
+                    Fieldset('Professional details',
+                             Row('profession', 'specialization'),
+                             Row('year_of_first_medical_certification', 'hospital'),
+                             Row('country', 'city'), 'work_number',
+                             ),
+                    'avatar'
+                    )
+
     class Meta:
         model = Doctor
         fields = ('first_name', 'middle_name', 'last_name', 'gender', 'date_of_birth', 'profession',
@@ -97,12 +109,4 @@ class QualificationForm(forms.ModelForm):
     class Meta:
         model = Qualification
         fields = ('field_of_study', 'qualification', 'university')
-
-
-
-# class ProfilePicture(forms.ModelForm):
-#     class Meta:
-#         model = Doctor
-#         fields = ('avatar', )
-
 

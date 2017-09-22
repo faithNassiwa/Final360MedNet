@@ -5,9 +5,12 @@ from .models import MedicalCase, Comment, MedicalCaseCategory
 
 
 class MedicalCaseForm(forms.ModelForm):
-
-    # medical_case_category = forms.ModelMultipleChoiceField(queryset=MedicalCaseCategory.objects.all(), required=True,
-    #                                                        widget=forms.CheckboxSelectMultiple)
+    layout = Layout('title', 'chief_complaint', Fieldset('Patient details',
+                             Row('patient_age', 'patient_gender', 'patient_country_of_origin'),
+                             'history_of_present_illness', 'medical_history', 'surgical_history', 'social_history',
+                            'family_history', 'allergies', 'medications', 'review_of_systems', 'physical_examination',
+                            'diagnostic_tests','any_other_details', 'medical_case_category'
+                             ),  'purpose')
 
     class Meta:
         model = MedicalCase

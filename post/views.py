@@ -22,7 +22,7 @@ home = settings.SITE_HOST
 class PostCreate(CreateView):
     model = Post
     form_class = PostForm
-    success_url = '/feed/'
+    success_url = '/discussions/'
 
     def form_valid(self, form):
         form.instance.doctor = Doctor.objects.get(user=self.request.user)

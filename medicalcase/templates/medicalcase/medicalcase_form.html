@@ -3,10 +3,10 @@
 {% load material_form %}
 
 {% block title %} Start a Medical Case | 360 MedNet {% endblock %}
-{% block large %}
+{% block content %}
 
-    <div class ="container" style="width: 100%">
-       <div class="row">
+    <div class ="container">
+
 
      <div class="col s12 m12 l12">
             <div class="row">
@@ -20,39 +20,38 @@
    {% form form=form %}
 
        {% part form.title prefix %}<i class="material-icons prefix"><font color="#5f9ea0">turned_in</font></i>{% endpart %}
-       {% part form.chief_complaint prefix %}<i class="material-icons prefix"><font color="#5f9ea0">invert_colors</font></i>{% endpart %}
-       {% part form.patient_age prefix %}<i class="material-icons prefix"><font color="#5f9ea0">today</font></i>{% endpart %}
-       {% part form.patient_gender prefix %}<i class="material-icons prefix"><font color="#5f9ea0">youtube_searched_for</font></i>{% endpart %}
+       {% part form.chief_complaint prefix %}<i class="material-icons prefix"><font color="#5f9ea0">note_add</font></i>{% endpart %}
+       {% part form.patient_age prefix %}<i class="material-icons prefix"><font color="#5f9ea0">date_range</font></i>{% endpart %}
+       {% part form.patient_gender prefix %}<i class="material-icons prefix"><font color="#5f9ea0">wc</font></i>{% endpart %}
        {% part form.patient_country_of_origin prefix %}<i class="material-icons prefix"><font color="#5f9ea0">room</font></i>{% endpart %}
-       {% part form.history_of_present_illness prefix %}<i class="material-icons prefix"><font color="#5f9ea0">replay</font></i>{% endpart %}
-       {% part form.medical_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">replay</font></i>{% endpart %}
-       {% part form.surgical_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">replay</font></i>{% endpart %}
-       {% part form.social_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">replay</font></i>{% endpart %}
-       {% part form.family_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">replay</font></i>{% endpart %}
-       {% part form.allergies prefix %}<i class="material-icons prefix"><font color="#5f9ea0">note_add</font></i>{% endpart %}
-       {% part form.medications prefix %}<i class="material-icons prefix"><font color="#5f9ea0">note_add</font></i>{% endpart %}
-       {% part form.review_of_systems prefix %}<i class="material-icons prefix"><font color="#5f9ea0">library_add</font></i>{% endpart %}
-       {% part form.physical_examination prefix %}<i class="material-icons prefix"><font color="#5f9ea0">library_add</font></i>{% endpart %}
-       {% part form.diagnostic_tests prefix %}<i class="material-icons prefix"><font color="#5f9ea0">library_add</font></i>{% endpart %}
+       {% part form.history_of_present_illness prefix %}<i class="material-icons prefix"><font color="#5f9ea0">history</font></i>{% endpart %}
+       {% part form.medical_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">history</font></i>{% endpart %}
+       {% part form.surgical_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">history</font></i>{% endpart %}
+       {% part form.social_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">history</font></i>{% endpart %}
+       {% part form.family_history prefix %}<i class="material-icons prefix"><font color="#5f9ea0">history</font></i>{% endpart %}
+       {% part form.allergies prefix %}<i class="material-icons prefix"><font color="#5f9ea0">local_hospital</font></i>{% endpart %}
+       {% part form.medications prefix %}<i class="material-icons prefix"><font color="#5f9ea0">local_hospital</font></i>{% endpart %}
+       {% part form.review_of_systems prefix %}<i class="material-icons prefix"><font color="#5f9ea0">assignment</font></i>{% endpart %}
+       {% part form.physical_examination prefix %}<i class="material-icons prefix"><font color="#5f9ea0">assignment</font></i>{% endpart %}
+       {% part form.diagnostic_tests prefix %}<i class="material-icons prefix"><font color="#5f9ea0">assignment</font></i>{% endpart %}
        {% part form.any_other_details prefix %}<i class="material-icons prefix"><font color="#5f9ea0">view_list</font></i>{% endpart %}
        {% part form.medical_case_category prefix %}<i class="material-icons prefix"><font color="#5f9ea0">view_list</font></i>{% endpart %}
 
    {% endform %}
-    <br><br>
-   <div class="submit col s12">
-		<button class="btn waves-effect waves-light" type="submit" name="_submit"> share
-    <i class="material-icons right">send</i>
-  </button>
-       </div>
-            <br><br><br>
+        <br><br>
+       <div class="submit col s12">
+            <button class="btn waves-effect waves-light" type="submit" name="_submit"> share
+        <i class="material-icons right">send</i>
+      </button>
+           </div>
+                <br><br><br>
 
-</form></p>
+        </form></p>
             </div>
           </div>
         </div>
       </div>
           </div>
-    </div>
     </div>
 
 <br>
