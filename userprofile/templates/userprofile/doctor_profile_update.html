@@ -1,50 +1,48 @@
 {% extends "userprofile/home.html" %}
-{% load staticfiles %}
 {% load material_form %}
 
 {% if user.is_authenticated %}
-{% block title_block %} {{doctor.first_name }} {{ doctor.last_name }} | 360 MedNet {% endblock %}
+{% block title %} {{doctor.first_name }} {{ doctor.last_name }} | 360 MedNet {% endblock %}
     {% block content %}
-<div class="row container">
+        <div class="row container">
 
- <div class="col s12 m12 l12">
-            <div class="row">
-        <div class="col l12">
-          <div class="card">
-            <div class="card-image">
-{#              <img src="{% static 'userprofile/images/cardhdr.png' %}" alt ="360 MedNet is Secure">#}
-            </div>
-            <div class="card-content">
-            <span class="card-title"></span>
-              <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-               {% form form=form %}
-                   {% part form.first_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
-                   {% part form.middle_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
-                   {% part form.last_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
-                   {% part form.gender prefix %}<i class="material-icons prefix">youtube_searched_for</i>{% endpart %}
-                   {% part form.date_of_birth prefix %}<i class="material-icons prefix">cake</i>{% endpart %}
-                   {% part form.qualification prefix %}<i class="material-icons prefix">class</i>{% endpart %}
-                   {% part form.profession prefix %}<i class="material-icons prefix">class</i>{% endpart %}
-                   {% part form.specialization prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
-                   {% part form.country prefix %}<i class="material-icons prefix">g_translate</i>{% endpart %}
-                   {% part form.city prefix %}<i class="material-icons prefix">location_city</i>{% endpart %}
-                   {% part form.year_of_first_medical_certification prefix %}<i class="material-icons prefix">date_range</i>{% endpart %}
-                   {% part form.mobile_number prefix %}<i class="material-icons prefix">phone</i>{% endpart %}
-                   {% part form.about_me prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
-                   {% part form.hospital prefix %}<i class="material-icons prefix">local_hospital</i>{% endpart %}
-                   {% part form.work_number prefix %}<i class="material-icons prefix">phone</i>{% endpart %}
+         <div class="col s12 m12 l12">
+                    <div class="row">
+                <div class="col l12">
+                  <div class="card">
+                    <div class="card-image">
+        {#              <img src="{% static 'userprofile/images/cardhdr.png' %}" alt ="360 MedNet is Secure">#}
+                    </div>
+                    <div class="card-content">
+                    <span class="card-title"></span>
+                      <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                       {% form form=form %}
+                           {% part form.first_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
+                           {% part form.middle_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
+                           {% part form.last_name prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
+                           {% part form.gender prefix %}<i class="material-icons prefix">youtube_searched_for</i>{% endpart %}
+                           {% part form.date_of_birth prefix %}<i class="material-icons prefix">cake</i>{% endpart %}
+                           {% part form.profession prefix %}<i class="material-icons prefix">class</i>{% endpart %}
+                           {% part form.specialization prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
+                           {% part form.country prefix %}<i class="material-icons prefix">g_translate</i>{% endpart %}
+                           {% part form.city prefix %}<i class="material-icons prefix">location_city</i>{% endpart %}
+                           {% part form.year_of_first_medical_certification prefix %}<i class="material-icons prefix">date_range</i>{% endpart %}
+                           {% part form.mobile_number prefix %}<i class="material-icons prefix">phone</i>{% endpart %}
+                           {% part form.about_me prefix %}<i class="material-icons prefix">person_pin</i>{% endpart %}
+                           {% part form.hospital prefix %}<i class="material-icons prefix">local_hospital</i>{% endpart %}
+                           {% part form.work_number prefix %}<i class="material-icons prefix">phone</i>{% endpart %}
 
-               {% endform %}
-                <br>
-                <button style="display: block; width: 100%;" type="submit" name="_submit" class="btn">Save </button>
-            </form>
-            </div>
-          </div>
+                       {% endform %}
+                        <br>
+                        <button style="display: block; width: 100%;" type="submit" name="_submit" class="btn">Update </button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                  </div>
+
         </div>
-      </div>
-          </div>
-
-</div>
     {% endblock %}
 {% endif %}
