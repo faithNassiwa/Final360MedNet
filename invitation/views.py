@@ -17,6 +17,11 @@ from django.conf import settings
 home = settings.SITE_HOST
 
 
+def replace_spaces_with_hyphen(name):
+    clean_name = "-".join(name.split())
+    return clean_name
+
+
 @staff_member_required
 def invite_user(request):
     if request.method == 'POST':
@@ -155,7 +160,8 @@ def registration_two(request):
     if request.method == 'POST':
         if doctor_form.is_valid() and user_form.is_valid():
             user = user_form.save()
-            user.username = first_name + "-" + last_name + "-" + User.objects.make_random_password(8)
+            user.username = replace_spaces_with_hyphen(first_name) + "-" + replace_spaces_with_hyphen(last_name) \
+                            + "-" + User.objects.make_random_password(8)
             user.first_name = request.session['first_name']
             user.last_name = request.session['last_name']
             user.set_password(user.password)
