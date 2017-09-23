@@ -264,7 +264,6 @@ COUNTRIES = (
 )
 
 
-
 class MedicalCaseCategory(models.Model):
     name = models.CharField(max_length=200, blank=False, default="General Medicine ")
     created_at = models.DateTimeField(auto_now=False, auto_now_add=True)

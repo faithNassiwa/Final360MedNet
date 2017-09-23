@@ -5,13 +5,15 @@
 {% block title %} {{ object.title }} | Medical Cases| 360 MedNet {% endblock %}
 {% block content %}
 
-                            <div class="card">
+
+            <div class="container">
+            <div class="card">
             <div class="container">
                 <br>
                 <p class="flow-text green-text" style="font-weight: 500">{{ object.title }}</p>
                 <p class="blue-grey-text">Presenting Complaint : </p>
                  <span class="green-text text-darken-4">{{ object.chief_complaint }}</span>
-                <br><br><span class="grey-text">Category:</span> <span class="blue-text">{{ object.medical_case_category }}</span>
+                <br><br><span class="grey-text">Category:</span> <span class="blue-text">{{ object.medical_case_category.name }}</span>
                 <div class="blue-grey-text">
                 <br>A {{ object.patient_age }} year old {{ object.patient_gender }} from {{ object.patient_country_of_origin }}
                 presented with {{ object.chief_complaint }}. The patient has a history of {{ object.history_of_present_illness }}
@@ -56,10 +58,13 @@
 
     </div>
             </div>
-                <div style="background-color: darkslategrey; height: 120px;" class="white-text" align="center">
+
+            </div>
+            </div>
+
+     <div style="background-color: darkslategrey; height: 120px;" class="white-text" align="center">
                   <br><br>&copy 2017 360MedNet - Medical Cases
               </div>
-            </div>
 
 
 {% endblock %}

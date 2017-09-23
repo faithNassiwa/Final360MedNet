@@ -38,7 +38,7 @@
             {% if top_five_latest_medical_cases %}
                   <ul class="cyan-text">
                       {% for medical_case in top_five_latest_medical_cases %}
-                          <li><a href="{% url 'medical_case-detail' medical_case.id %}">{{medical_case.title }}</a></li>
+                          <li><a href="{% url 'medical-case-detail' medical_case.id %}">{{medical_case.title }}</a></li>
                      {% endfor %}
             </ul>
                 {% else %}
@@ -66,7 +66,7 @@
             <div class="row">
             <div class="col l12 m12 s12">
               <div class="card">
-            <div class="container">
+            <div class="card-content">
                 <br><h5 style="font-weight: 300"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
                 <br><span class="blue-grey-text">{{ post.post_content }}</span>
             <br>
@@ -81,6 +81,12 @@
                               <br>on {{ post.created_at}}</span>
                     </td>
                 </tr></table>
+
+                    <div class="card-action" >
+                  <a href="{% url 'post-comment' post.id  %}" >Comment </a>
+
+
+                    </div>
                  </div>
               </div>
             </div>

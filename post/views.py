@@ -130,21 +130,6 @@ def post_comment_add_view(request, pk):
     return HttpResponseRedirect(reverse('post-detail', kwargs={'pk': pk}))
 
 
-@login_required
-def add_comment_to_post(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.doctor = Doctor.objects.get(user=request.user)
-            comment.save()
-            return HttpResponseRedirect(reverse('post-detail', kwargs={'pk': post.pk}))
-    else:
-        form = CommentForm()
-    return render(request, 'post/add_comment_to_post.html', {'form': form})
-
 
 @login_required
 def add_image_on_post(request, pk):

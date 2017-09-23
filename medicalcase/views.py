@@ -78,8 +78,8 @@ def medical_case_comment_add_view(request, pk):
         form.instance.doctor = Doctor.objects.get(user=request.user)
         form.instance.medical_case = MedicalCase.objects.get(pk=pk)
         form.save()
-        return HttpResponseRedirect(reverse('medical_case-detail', kwargs={'pk': pk}))
-    return HttpResponseRedirect(reverse('medical_case-detail', kwargs={'pk': pk}))
+        return HttpResponseRedirect(reverse('medical-case-detail', kwargs={'pk': pk}))
+    return HttpResponseRedirect(reverse('medical-case-detail', kwargs={'pk': pk}))
 
 
 @login_required

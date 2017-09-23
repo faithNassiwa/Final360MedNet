@@ -3,37 +3,44 @@
 {% load material_form %}
 
 {% block title %}Suggest doctor to invite | 360MedNet{% endblock %}
-{% block large %}
+{% block content %}
 
  <br>
+    <div class="container">
     <div class="card card-content ">
-    <div class="container" style="text-align: center">
+    <div class="container">
     <br>
         <p class="flow-text" align="center" style="font-size: xx-large">Suggest Doctor</p>
 
-      <div class="row">
-       {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% else %}
-       <form method="post" class="viewform">
-        {% csrf_token %}
-       {% form form=form %}
+          <div class="row">
+           {% if messages %}
+                <ul class="messages">
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+           {% else %}
+           <form method="post" class="viewform">
+                {% csrf_token %}
+                {% form form=form %}
+                   {% part form.email prefix %}<i class="material-icons prefix">email</i>{% endpart %}
+                   {% part form.name prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
 
-    {% endform %}
-       <br>
-       <div class="submit col s12">
-		<button class="btn waves-effect waves-light" type="submit" name="_submit"> Send Suggestion
-    <i class="material-icons right">send</i>
-  </button><br><br><br>
-       </div>
-       </form>
-      {% endif %}
-          <br><br>
-      <br><br></div></div></div>
+                {% endform %}
+               <br>
+               <div class="submit col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="_submit"> Send Suggestion
+                <i class="material-icons right">send</i>
+                </button><br><br><br>
+                </div>
+            </form>
+            {% endif %}
+            <br><br>
+            <br><br>
+          </div>
+    </div>
+    </div>
+    </div>
 
 <br><br><br><br>
 

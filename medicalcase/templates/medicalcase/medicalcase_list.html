@@ -3,8 +3,9 @@
 {% load material_form %}
 
 {% block title %} Medical Cases | 360 MedNet {% endblock %}
-{% block large %}
-
+{% block content %}
+<div class="container">
+<div class="row">
 <div class="col l12 m12 s12">
  <a href="{% url 'medical-case' %}">
   <div class="card card light-green card-content white-text">
@@ -15,14 +16,18 @@
   </div>
 </a>
 </div>
+</div>
 
-<div class="col l12 m12 s12">
 {% if object_list.count > 0 %}
+
+
         {% for medical_case in object_list %}
-              <div class="card">
-            <div class="container">
+            <div class="row">
+            <div class="col l12 m12 s12">
+                <div class="card">
+            <div class="card-content">
                 <br>
-                <br><span class="flow-text" ><a href="{% url 'medical_case-detail' medical_case.id %}">{{ medical_case.title }}</a></span>
+                <br><span class="flow-text" ><a href="{% url 'medical-case-detail' medical_case.id %}">{{ medical_case.title }}</a></span>
 
                 <br><br><span class="green-text">Presenting Complaint</span>
                 <br><span class="blue-grey-text">{{ medical_case.chief_complaint }}</span>
@@ -36,13 +41,22 @@
                         <div class="grey-text">
                         <br><a href="{% url 'doctor-detail' medical_case.doctor.id %}">Dr. {{ medical_case.doctor.first_name }} {{ medical_case.doctor.last_name }}</a>
             <br>{{ medical_case.doctor.profession}} at {{ medical_case.doctor.hospital}}
-            <br>Posted on {{ medical_case.created_at}}
-             <br>Last updated on {{ medical_case.updated_at}}
+            <br>Posted on {{ medical_case.created_at.time}}
+             <br>Last updated on {{ medical_case.updated_at.time}}
                         </div>
                     </td>
                 </tr></table>
 
                 <br>
+
+                <div class="card-action" >
+          <a href="{% url 'medical-case-comment' medical_case.id  %}" >Comment </a>
+
+
+            </div>
+
+            </div>
+            </div>
             </div>
             </div>
         {% endfor %}
@@ -59,7 +73,7 @@
           </div>
         </div>
 {% endif %}
-</div>
 
+</div>
 
 {% endblock %}
