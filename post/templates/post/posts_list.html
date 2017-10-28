@@ -17,7 +17,7 @@
             {% if top_five_latest_events %}
                  <ul class="cyan-text">
                      {% for event in top_five_latest_events %}
-                         <li>{{ event }}</li>
+                         <li><a href="{% url 'event' event.id %}">{{ event }}</a></li>
                      {% endfor %}
                  </ul>
                 {% else %}

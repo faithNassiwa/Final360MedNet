@@ -15,7 +15,7 @@
 
         <p class="grey-text text-darken-2">{{ object.post_content }}</p>
     <br><br>
-        Posted by: <span class="blue-text"> <a href="{% url 'doctor-detail' medical_case.doctor.id %}">
+        Posted by: <span class="blue-text"> <a href="{% url 'doctor-detail' post.doctor.id %}">
         Dr. {{ object.doctor.first_name }} {{ object.doctor.last_name }}</a></span>
 {#    <br><a href="{% url 'comment' object.id %}" class="button">Comment</a>#}
     <br>
