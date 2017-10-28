@@ -6,7 +6,7 @@
 {% block content %}
  <div class ="container">
  <br>
-    <div class="card blue-grey darken-1 card-content white-text">
+    <div class="card  card-content ">
     <div class="container" style="text-align: center">
     <br>
         <p class="flow-text" align="center">Use invitation code to sign up</p>
@@ -15,6 +15,9 @@
        <form method="post" class="viewform">
         {% csrf_token %}
        {% form form=form %}
+           {% part form.first_name prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+           {% part form.last_name prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+           {% part form.invitation_code prefix %}<i class="material-icons prefix">lock_open</i>{% endpart %}
 
     {% endform %}
        <br>

@@ -10,36 +10,41 @@
     <br><span class="green-text">Welcome to 360MedNet. </span>
     <br> Please complete the final step of the registration.
     <br>
-<form method="POST">
-    {% csrf_token %}
-    <br>
-    <div class="row">
-        <div class="col s12 m6 l6">
-    First name: <input type="text" value="{{ first_name }}"
-       class="field left" readonly="readonly">
-        </div>
-        <div class="col s12 m6 l6">
-    Last name:<input type="text" value="{{ last_name}}"
-       class="field left" readonly="readonly">
+        <div class="card card-content ">
+            <div class="container">
+            <form method="POST">
+                {% csrf_token %}
+                <br>
+                <div class="row">
+                    <div class="col s12 m6 l6">
+                First name: <input type="text" value="{{ first_name }}"
+                   class="field left" readonly="readonly">
+                    </div>
+                    <div class="col s12 m6 l6">
+                Last name:<input type="text" value="{{ last_name}}"
+                   class="field left" readonly="readonly">
+                        </div>
+                </div>
+
+                <h5>Account details</h5>
+{#                {% form form=user_form %}{% endform %}#}
+
+              {{ user_form.as_p }}
+
+                <h5>Profession details</h5>
+                {{ doctor_form.as_p }}
+
+                <input type="checkbox" id="checkboxid" required><label for="checkboxid">&nbsp; Clicking here indicates that you have read
+                and agree to the 360MedNet <a href="{% url 'terms_of_use' %}" target="_blank">Terms of use</a> and
+                <a href="{% url 'privacy_policy' %}" target="_blank"> Privacy Policy.</a></label>
+
+                <br>
+                <br>
+                <button type="submit" name="_submit" class="btn">Register</button>
+            </form>
+                <br>
             </div>
+        </div>
     </div>
-    <br>
-    <h5>Account details</h5>
-    {{ user_form.as_p }}
-    <br>
-
-    <h5>Profession details</h5>
-    {{ doctor_form.as_p }}
-
-    <br>
-    <input type="checkbox" id="checkboxid" required><label for="checkboxid">&nbsp; Clicking here indicates that you have read
-    and agree to the 360MedNet <a href="{% url 'terms_of_use' %}">Terms of use</a> and <a href="{% url 'privacy_policy' %}">
-            Privacy Policy.</a></label>
-
-    <br>
-    <br>
-    <button type="submit" name="_submit" class="btn">Register</button>
-</form>
-    </div>
-        <br><br>
+    <br><br>
 {% endblock %}
