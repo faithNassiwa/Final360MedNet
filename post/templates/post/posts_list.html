@@ -76,7 +76,7 @@
                     <br><img class="round" src="{{post.doctor.avatar.url }}" class="responsive-img img-fluid"
                      style='max-height:70px;'>
                 </td>
-                      <td><br><span class="blue-text"><a href="{% url 'doctor-detail' medical_case.doctor.id %}">Dr. {{ post.doctor.first_name }} {{ post.doctor.last_name }}</a></span>
+                      <td><br><span class="blue-text"><a href="{% url 'doctor-detail' post.doctor.id %}">Dr. {{ post.doctor.first_name }} {{ post.doctor.last_name }}</a></span>
             <br><span class="grey-text">{{ post.doctor.profession}} at {{ post.doctor.hospital}}
                               <br>on {{ post.created_at}}</span>
                     </td>
