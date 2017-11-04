@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'django_countries',
     'django_wysiwyg',
     'ckeditor',
+    'analytical',
 
     # Custom Apps
     'website',
@@ -204,3 +205,6 @@ DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 settings.COUNTRIES_FIRST = ['UG']
 
 LOGOUT_REDIRECT_URL = '/login'
+
+GOOGLE_ANALYTICS_PROPERTY_ID = config('GOOGLE_ANALYTICS_PROPERTY_ID')
+GOOGLE_ANALYTICS_SITE_SPEED = True

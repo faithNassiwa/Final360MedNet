@@ -1,3 +1,4 @@
+{% load google_analytics %}
 <!DOCTYPE html>
 <html lang="en">
  <head>
@@ -19,6 +20,7 @@
 
          {% load wysiwyg %}
          {% wysiwyg_setup %}
+        {% google_analytics %}
 
  </head>
 
@@ -50,10 +52,10 @@
                 </i>Discussion Forum</a>
                 <li><a href="{% url 'medical_cases' %}" class="blue-grey-text"><i class="material-icons">assignment</i>
                     View Medical Cases</a></li>
-                <li><a href="{% url 'suggest-doctor' %}" class="blue-grey-text"><i class="material-icons">person_add
-                </i>Suggest Health Professional</a></li>
                 <li><a href="{% url 'events' %}" class="blue-grey-text"><i class="material-icons">insert_invitation</i>
                     Events & Conferences</a></li>
+                <li><a href="{% url 'suggest-doctor' %}" class="blue-grey-text"><i class="material-icons">person_add
+                </i>Suggest Health Professional</a></li>
 
                 <br>
                 <div class="divider"></div>
@@ -241,6 +243,9 @@
         </div>
 
         <br>
+
+        {% wysiwyg_editor "id_post_content" %}
+
  </body>
-    {% wysiwyg_editor "id_post_content" %}
+
 </html>

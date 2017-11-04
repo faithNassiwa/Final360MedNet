@@ -68,7 +68,7 @@
               <div class="card">
             <div class="card-content">
                 <br><h5 style="font-weight: 300"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
-                <br><span class="blue-grey-text">{{ post.post_content }}</span>
+                <br><span class="blue-grey-text">{{ post.post_content | safe }}</span>
             <br>
                 <div class="divider"></div>
 
