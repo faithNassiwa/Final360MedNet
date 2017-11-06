@@ -39,7 +39,7 @@
                 </td>
                     <td>Shared by:<br>
                         <div class="grey-text">
-                        <br><a href="{% url 'doctor-detail' medical_case.doctor.id %}">Dr. {{ medical_case.doctor.first_name }} {{ medical_case.doctor.last_name }}</a>
+                        <br><a href="{% url 'profile' medical_case.doctor.user.username %}">Dr. {{ medical_case.doctor.first_name }} {{ medical_case.doctor.last_name }}</a>
             <br>{{ medical_case.doctor.profession}} at {{ medical_case.doctor.hospital}}
             <br>Posted on {{ medical_case.created_at.time}}
              <br>Last updated on {{ medical_case.updated_at.time}}

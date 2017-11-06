@@ -1,88 +1,105 @@
 {% extends "userprofile/home.html" %}
-{% load material_form %}
+{% load static %}
 
-{% block title %} {{ object.first_name }} {{ object.last_name }} | 360 MedNet {% endblock %}
+
+{% if user.is_authenticated %}
+{% block title %} Dr. {{ user.doctor.first_name }} {{ user.doctor.last_name }} | 360 MedNet {% endblock %}
 
 {% block content %}
+
     <div class="row container ">
     <div class="card">
         <div class="card content ">
-        <div class="col s12 m9 l9">
-
-        <table>
-            <tr>
-                <td>
-                    <br><img src="{{object.avatar.url }}" width = "150" class="responsive-img img-fluid"
-                     style='max-height:150px;'>
-                </td>
-                <td><br><font color="#4682b4">{{ object.first_name }} {{ object.last_name }}</font>
-                    <br>{{ object.profession}} at {{ object.hospital}}
-                    <br>{{ object.specialization }}
-                    <br><br>Joined on {{ object.created_at }}
-                    </td>
-                </tr></table>
+        <div class="container">
+        <div class=" col s12 m12 l12">
+            <br>
+            <div class="row" style="text-align:center;"><img src="{{object.avatar.url }}" width = "150" class="responsive-img img-fluid"
+                     style='max-height:150px; width: 150px; height: 150px; border-radius: 50%;'>
+            </div>
+            <div class="row" style="text-align:center;">
+                <h5>{{ object.first_name }} {{ object.last_name }}</h5>
+                <h6>{{ object.profession}} at {{ object.hospital}}</h6>
+                <h6>{{ object.country }}</h6>
+            </div>
 
         <div class="divider"></div>
-        <br> About me<br><font color="#4682b4">{{ object.about_me }}</font><br><br><br>
+        <div class="row " style="text-align:justify">
+            <div class="col s1 m1 l1"></div>
+            <div class="col s10 m10 l10">
+                <br>{{ object.about_me }}
+                <br>
+            </div>
+            <div class="col s1 m1 l1"></div>
+        </div>
         <div class="divider"></div>
 
-        <div class="row">
+        <div class="row " style="text-align:justify">
+        <div class="col s1 m1 l1"></div>
+        <div class="col s10 m10 l10">
         <br>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Gender :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.gender }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Date of Birth :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.date_of_birth }}</div></font>
-        </div>
+
+        {% if read_qualification > 0 %}
         <div class="row">
             <div class="col s12 m3 l4"><h6>Qualification </h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">
+            <div class="col s12 m5 l6">
                 {% for rq in read_qualification %}
                 <br>Qualification:{{ rq.qualification }} &nbsp Field of Study:{{ rq.field_of_study }} &nbsp University:{{ rq.university }}
                 {% endfor %}
-                </div></font>
+                </div></div>
+        {% endif %}
 
+        <div class="row ">
+            <div class="col s12 m6 l6"><h6>Specialization:</h6></div>
+            <div class="col s12 m6 l6"><strong>{{ object.specialization }}</strong></div>
         </div>
         <div class="row">
-            <div class="col s12 m3 l4"><h6>Profession :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.profession }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Specialization :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.specialization }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Year of first medical certification :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.year_of_first_medical_certification }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Personal Telephone :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.mobile_number }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Country of work :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.country.name }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>City of work :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.city }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Place of work :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.hospital }}</div></font>
-        </div>
-        <div class="row">
-            <div class="col s12 m3 l4"><h6>Work Telephone :</h6></div>
-            <font color="#4682b4"><div class="col s12 m5 l6">{{ object.work_number }}</div></font>
+            <div class="col s12 m6 l6"><h6>Year of first medical certification:</h6></div>
+            <div class="col s12 m6 l6"><strong>{{ object.year_of_first_medical_certification }}</strong></div>
         </div>
 
+        <div class="row">
+            <div class="col s12 m6 l6"><h6>Country of work:</h6></div>
+            <div class="col s12 m6 l6"><strong>{{ object.country}}</strong></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6"><h6>City of work:</h6></div>
+            <div class="col s12 m6 l6"><strong>{{ object.city }}</strong></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6"><h6>Place of work:</h6></div>
+            <div class="col s12 m6 l6"><strong>{{ object.hospital }}</strong></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6"><h6>Mobile Number:</h6></div>
+            <div class="col s12 m6 l6"><strong>{{ object.mobile_number }}</strong></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6"><h6>Work Telephone:</h6></div>
+            <div class="col s12 m6 l6"><strong>{{ object.work_number }}</strong></div>
+        </div>
+        </div>
+        <div class="col s1 m1 l1"></div>
+        </div>
+
+        {% if user.email == object.user.email %}
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col s1 m1 l1"></div>
+                <div class="col s10 m10 l10">
+                <br>Joined on {{ object.created_at.date }}
+                <br> Last updated on {{ object.updated_at.date}}
+                <br><br>
+                <div class="row container">
+                    <a class="btn" href="{% url 'update_doctor' user.doctor.id %}">Update Profile</a>
+                </div>
+                </div>
+                <div class="col s1 m1 l1"></div>
+            </div>
+        {% endif %}
         </div>
         </div>
         </div>
     </div>
     </div>
-
-
 {% endblock %}
+{% endif %}

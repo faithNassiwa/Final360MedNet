@@ -28,7 +28,7 @@
                      style='max-height:80px;'>
                 </td>
                     <td>Shared by:<br>
-                        <br>Dr. {{ object.doctor.first_name }} {{ object.doctor.last_name }}
+                        <br><a href="{% url 'profile' object.doctor.user.username %}">Dr. {{ object.doctor.first_name }} {{ object.doctor.last_name }}</a>
             <br>{{ object.doctor.profession}} at {{ object.doctor.hospital}}
             <br>Posted on {{ object.created_at}}
                        <br>Last updated on  {{ object.updated_at}}
@@ -47,7 +47,8 @@
 
     {% for comment in view.comments %}
         <br><span class="blue-grey-text">{{ comment.comment_content }}</span>
-        <br><br><span class="grey-text">Comment by:</span> Dr. {{ comment.doctor.first_name  }} &nbsp{{ comment.doctor.last_name  }}
+        <br><br><span class="grey-text">Comment by:</span>
+        <a href="{% url 'profile' comment.doctor.user.username %}">Dr. {{ comment.doctor.first_name  }} &nbsp{{ comment.doctor.last_name  }}</a>
         <br><span class="grey-text">{{ comment.created_at }}</span>
         <br><br>
         <div class="divider"></div>

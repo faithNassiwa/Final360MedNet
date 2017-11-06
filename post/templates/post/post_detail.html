@@ -15,7 +15,7 @@
 
         <p class="grey-text text-darken-2">{{ object.post_content | safe }}</p>
     <br><br>
-        Posted by: <span class="blue-text"> <a href="{% url 'doctor-detail' post.doctor.id %}">
+        Posted by: <span class="blue-text"> <a href="{% url 'profile' post.doctor.user.username %}">
         Dr. {{ object.doctor.first_name }} {{ object.doctor.last_name }}</a></span>
 {#    <br><a href="{% url 'comment' object.id %}" class="button">Comment</a>#}
     <br>
@@ -31,7 +31,8 @@
     {% for comment in view.comments %}
         <br>{{ comment.comment_content }}
         <br>
-        <br><span class="grey-text">{{ comment.doctor.first_name  }} &nbsp{{ comment.doctor.last_name  }}</span>
+        <br><span class="grey-text"><a href="{% url 'profile' comment.doctor.user.username %}">
+        {{ comment.doctor.first_name  }} &nbsp{{ comment.doctor.last_name  }}</a></span>
         <br><span class="grey-text">{{ comment.created_at }}</span>
         <br><br>
         <div class="divider"></div>

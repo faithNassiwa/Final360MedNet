@@ -4,50 +4,50 @@
 
 {% block title %} Discussions | 360 MedNet {% endblock %}
 {% block large %}
-<div style="min-height: 100vh; display: flex; flex-direction: column; background-color: #ffffff">
-
-    <div class="row">
-
-          <div class="card col s12 m6 l6" style="height: 200px;">
-            <div class="card-image">
-              <img src="{% static 'userprofile/images/medisharedrk.jpeg' %}">
-                <br><span class="card-title" style="font-weight: 500">Upcoming Events</span>
-            </div>
-            <div class="card-content">
-            {% if top_five_latest_events %}
-                 <ul class="cyan-text">
-                     {% for event in top_five_latest_events %}
-                         <li><a href="{% url 'event' event.id %}">{{ event }}</a></li>
-                     {% endfor %}
-                 </ul>
-                {% else %}
-                <br><span class="red-text">There are no upcoming Events or Conferences.</span>
-            {% endif %}
-            </div>
-          <br>
-          </div>
-
-
-          <div class="card col s12 m6 l6" style="height: 200px;">
-            <div class="card-image">
-              <img src="{% static 'userprofile/images/medisharedrk.jpeg' %}">
-                <br><span class="card-title" style="font-weight: 500">Latest Medical Cases</span>
-            </div>
-            <div class="card-content">
-
-            {% if top_five_latest_medical_cases %}
-                  <ul class="cyan-text">
-                      {% for medical_case in top_five_latest_medical_cases %}
-                          <li><a href="{% url 'medical-case-detail' medical_case.id %}">{{medical_case.title }}</a></li>
-                     {% endfor %}
-            </ul>
-                {% else %}
-                <br><span class="red-text">No Medical cases yet.</span>
-            {% endif %}
-            </div>
-          <br>
-          </div>
-    </div>
+{#<div style="min-height: 100vh; display: flex; flex-direction: column; background-color: #ffffff">#}
+<div>
+{#    <div class="row">#}
+{##}
+{#          <div class="card col s12 m6 l6" style="height: 200px;">#}
+{#            <div class="card-image">#}
+{#              <img src="{% static 'userprofile/images/medisharedrk.jpeg' %}">#}
+{#                <br><span class="card-title" style="font-weight: 500">Upcoming Events</span>#}
+{#            </div>#}
+{#            <div class="card-content">#}
+{#            {% if top_five_latest_events %}#}
+{#                 <ul class="cyan-text">#}
+{#                     {% for event in top_five_latest_events %}#}
+{#                         <li><a href="{% url 'event' event.id %}">{{ event }}</a></li>#}
+{#                     {% endfor %}#}
+{#                 </ul>#}
+{#                {% else %}#}
+{#                <br><span class="red-text">There are no upcoming Events or Conferences.</span>#}
+{#            {% endif %}#}
+{#            </div>#}
+{#          <br>#}
+{#          </div>#}
+{##}
+{##}
+{#          <div class="card col s12 m6 l6" style="height: 200px;">#}
+{#            <div class="card-image">#}
+{#              <img src="{% static 'userprofile/images/medisharedrk.jpeg' %}">#}
+{#                <br><span class="card-title" style="font-weight: 500">Latest Medical Cases</span>#}
+{#            </div>#}
+{#            <div class="card-content">#}
+{##}
+{#            {% if top_five_latest_medical_cases %}#}
+{#                  <ul class="cyan-text">#}
+{#                      {% for medical_case in top_five_latest_medical_cases %}#}
+{#                          <li><a href="{% url 'medical-case-detail' medical_case.id %}">{{medical_case.title }}</a></li>#}
+{#                     {% endfor %}#}
+{#            </ul>#}
+{#                {% else %}#}
+{#                <br><span class="red-text">No Medical cases yet.</span>#}
+{#            {% endif %}#}
+{#            </div>#}
+{#          <br>#}
+{#          </div>#}
+{#    </div>#}
 
     <div class="card" style="max-height: 100px">
         <div class="card-image">
@@ -58,41 +58,46 @@
 
     <div class="infinite-container">
 
-{% if all_posts.count > 0 %}
+    {% if all_posts.count > 0 %}
 
-        {% for post in all_posts %}
+            {% for post in all_posts %}
 
-         <div class="col s12 m12 l12">
-            <div class="row">
-            <div class="col l12 m12 s12">
-              <div class="card">
-            <div class="card-content">
-                <br><h5 style="font-weight: 300"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
-                <br><span class="blue-grey-text">{{ post.post_content | safe }}</span>
-            <br>
-                <div class="divider"></div>
-
-                  <table><tr><td>
-                    <br><img class="round" src="{{post.doctor.avatar.url }}" class="responsive-img img-fluid"
-                     style='max-height:70px;'>
-                </td>
-                      <td><br><span class="blue-text"><a href="{% url 'doctor-detail' post.doctor.id %}">Dr. {{ post.doctor.first_name }} {{ post.doctor.last_name }}</a></span>
-            <br><span class="grey-text">{{ post.doctor.profession}} at {{ post.doctor.hospital}}
-                              <br>on {{ post.created_at}}</span>
-                    </td>
-                </tr></table>
-
-                    <div class="card-action" >
-                  <a href="{% url 'post-comment' post.id  %}" >Comment </a>
-
-
+             <div class="col s12 m12 l12">
+                <div class="row">
+                <div class="col l12 m12 s12">
+                  <div class="card">
+                <div class="card-content">
+                     <div class="row">
+                        <div class="col l2 m2 s2">
+                        <a href="{% url 'profile' post.doctor.user.username %}">
+                            <img class="round" src="{{post.doctor.avatar.url }}" class="responsive-img img-fluid"
+                         style='max-height:70px; width: 70px; height: 70px; border-radius: 50%;'></a>
+                        </div>
+                        <div class="col l10 m10 s10">
+                        <span class="blue-text"><a href="{% url 'profile' post.doctor.user.username %}">
+                            <h6><strong>Dr. {{ post.doctor.first_name }} {{ post.doctor.last_name }}</strong></h6></a>
+                        </span>
+                        <span class="grey-text">{{ post.doctor.profession}} at {{ post.doctor.hospital}}
+                            <br>on {{ post.created_at}}</span>
+                        </div>
+                       </div>
+                    <div class="row">
+                    <h5><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
+                    <span class="blue-grey-text">{{ post.post_content | safe }}</span>
                     </div>
-                 </div>
-              </div>
-            </div>
-            </div>
-         </div>
-<br><br><br>
+                    </div>
+
+                        <div class="card-action" >
+                      <a href="{% url 'post-comment' post.id  %}" >Comment </a>
+
+
+                        </div>
+                     </div>
+                  </div>
+                </div>
+                </div>
+             </div>
+            <br><br><br>
 
         {% endfor %}
 {% else %}

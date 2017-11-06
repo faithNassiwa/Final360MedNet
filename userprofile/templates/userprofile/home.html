@@ -30,9 +30,8 @@
             {% block sidenav %}
                 <div class="userView">
                     <div align="center" >
-
-                        <img src="{{ user.doctor.avatar.url }}" class="responsive-img img-fluid img-circle"
-                             style='max-height:150px;'>
+                            <img src="{{ user.doctor.avatar.url }}" class="responsive-img img-fluid img-circle"
+                             style='max-height:80px; width: 80px; height: 80px; border-radius: 50%;'>
                         <span class="grey-text" style="font-size: small">
                             <br>{{ user.doctor.first_name }} {{ user.doctor.last_name }}
                             <br>{{ user.doctor.profession }} at {{ user.doctor.hospital }}
@@ -46,12 +45,12 @@
 
                 <div class="divider"></div>
                 <br>
-                <li><a href="{% url 'Post' %}" class="blue-grey-text"><i class="material-icons">mode_edit</i>
-                    Post on Forum</a></li>
+{#                <li><a href="{% url 'Post' %}" class="blue-grey-text"><i class="material-icons">mode_edit</i>#}
+{#                    Post on Forum</a></li>#}
                 <li><a href="{% url 'all-discussions' %}" class="blue-grey-text"><i class="material-icons">forum
-                </i>Discussion Forum</a>
+                </i>Discussions</a>
                 <li><a href="{% url 'medical_cases' %}" class="blue-grey-text"><i class="material-icons">assignment</i>
-                    View Medical Cases</a></li>
+                    Medical Cases</a></li>
                 <li><a href="{% url 'events' %}" class="blue-grey-text"><i class="material-icons">insert_invitation</i>
                     Events & Conferences</a></li>
                 <li><a href="{% url 'suggest-doctor' %}" class="blue-grey-text"><i class="material-icons">person_add
@@ -73,10 +72,11 @@
         <main>
                 <div class="navbar-fixed">
                     <nav>
-                      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-
+                      <a href="#" data-activates="slide-out" class="button-collapse">
+                          <i class="material-icons">menu</i></a>
                             <div class="nav-wrapper" style="max-width:70%">
-                                    <a href="{% url 'all-discussions' %}"><img src="{% static 'userprofile/images/textlogohome.png' %}"
+                                    <a href="{% url 'all-discussions' %}">
+                                        <img src="{% static 'userprofile/images/textlogohome.png' %}"
                                         style='max-height:55px;padding-top:5px;'></a>
                             </div>
                     </nav>
@@ -90,74 +90,74 @@
                         {% endblock large %}
                       </div>
 
-                      <div class="col s12 m4 l3" style="font-size: small">
-                          {% block thin %}
-                              <div class="card col l12">
-                                <br>
-                                  <div class="card-image">
-                                  <img src="{% static 'userprofile/images/eventheader.jpg' %}">
-                                </div>
-                                <div class="card-content">
-                                    <span class="deep-orange-text"></span>
-                                    <div class="row">
-                                        {% for month_event in month_events %}
-                                            <div class="col l4 m4 s4">
-                                                <span class="centred">
-                                                    <a onclick="showPopup('popup1');">
-                                                        {{ month_event }}
-                                                        <span class="chip" style="color: #f44336">4</span>
-                                                    </a>
-                                                </span>
-                                            </div>
-                                        {% endfor %}
-
-                                    </div>
-                              </div>
-
-                              <br><br>
-
-                              <br><br>
-
-                              <br><br>
-
-
-                              <div class="card col l12">
-                                <div class="card-image">
-                                  <img src="{% static 'userprofile/images/cardhdr.png' %}">
-                                </div>
-                                <div class="card-content">
-                                <span class="deep-orange-text">New Doctors</span>
-                                  {% if top_five_latest_medics %}
-                                      <ul class="cyan-text">
-                                          {% for medic in top_five_latest_medical_professionals %}
-                                              <li>{{ medic.first_name }} {{ medic.last_name }}</li>
-                                          {% endfor %}
-                                        </ul>
-                                  {% else %}
-                                      <br><span class="red-text">No New Medics.</span>
-                                  {% endif %}
-                                </div>
-                              </div>
-
-                              <br>
-                              <div class="card col s12 m12 l12">
-                              <div class="card-image">
-                                  <img  src="{% static 'userprofile/images/cardhdr.png' %}">
-                                </div>
-                                  <ul>
-                                      <p align="center" style="font-size: small"><a href="{% url 'about_us' %}">About us</a> &nbsp| &nbsp
-                                            <a href="{% url 'help' %}">Help</a> &nbsp| &nbsp <a href="{% url 'terms_of_use' %}">Terms</a> &nbsp| &nbsp
-                                            <a href="{% url 'privacy_policy' %}">Privacy</a></p>
-                                      <p align="center" style="font-size: small">&copy; 2017 360MedNet</p>
-                                      <br>
-                                    </ul>
-                              </div>
-
-
-                          {% endblock  %}
-                        </div>
-                    </div>
-                    </div>
+{#                      <div class="col s12 m4 l3" style="font-size: small">#}
+{#                          {% block thin %}#}
+{#                              <div class="card col l12">#}
+{#                                <br>#}
+{#                                  <div class="card-image">#}
+{#                                  <img src="{% static 'userprofile/images/eventheader.jpg' %}">#}
+{#                                </div>#}
+{#                                <div class="card-content">#}
+{#                                    <span class="deep-orange-text"></span>#}
+{#                                    <div class="row">#}
+{#                                        {% for month_event in month_events %}#}
+{#                                            <div class="col l4 m4 s4">#}
+{#                                                <span class="centred">#}
+{#                                                    <a onclick="showPopup('popup1');">#}
+{#                                                        {{ month_event }}#}
+{#                                                        <span class="chip" style="color: #f44336">4</span>#}
+{#                                                    </a>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                        {% endfor %}#}
+{##}
+{#                                    </div>#}
+{#                              </div>#}
+{##}
+{#                              <br><br>#}
+{##}
+{#                              <br><br>#}
+{##}
+{#                              <br><br>#}
+{##}
+{##}
+{#                              <div class="card col l12">#}
+{#                                <div class="card-image">#}
+{#                                  <img src="{% static 'userprofile/images/cardhdr.png' %}">#}
+{#                                </div>#}
+{#                                <div class="card-content">#}
+{#                                <span class="deep-orange-text">New Doctors</span>#}
+{#                                  {% if top_five_latest_medics %}#}
+{#                                      <ul class="cyan-text">#}
+{#                                          {% for medic in top_five_latest_medical_professionals %}#}
+{#                                              <li>{{ medic.first_name }} {{ medic.last_name }}</li>#}
+{#                                          {% endfor %}#}
+{#                                        </ul>#}
+{#                                  {% else %}#}
+{#                                      <br><span class="red-text">No New Medics.</span>#}
+{#                                  {% endif %}#}
+{#                                </div>#}
+{#                              </div>#}
+{##}
+{#                              <br>#}
+{#                              <div class="card col s12 m12 l12">#}
+{#                              <div class="card-image">#}
+{#                                  <img  src="{% static 'userprofile/images/cardhdr.png' %}">#}
+{#                                </div>#}
+{#                                  <ul>#}
+{#                                      <p align="center" style="font-size: small"><a href="{% url 'about_us' %}">About us</a> &nbsp| &nbsp#}
+{#                                            <a href="{% url 'help' %}">Help</a> &nbsp| &nbsp <a href="{% url 'terms_of_use' %}">Terms</a> &nbsp| &nbsp#}
+{#                                            <a href="{% url 'privacy_policy' %}">Privacy</a></p>#}
+{#                                      <p align="center" style="font-size: small">&copy; 2017 360MedNet</p>#}
+{#                                      <br>#}
+{#                                    </ul>#}
+{#                              </div>#}
+{##}
+{##}
+{#                          {% endblock  %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    </div>#}
 
                     {% endblock %}
 
