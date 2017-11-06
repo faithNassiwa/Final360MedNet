@@ -10,7 +10,9 @@ git clone (project-link)
 #Install requirements.
 pip install requirements.pip
 
-#create .env file in the project's root directory
+#Create postgres database
+
+#Create .env file in the project's root directory
 This file should contain all variables provided in settings.py. Refer to the env.sample file in the project root
 directory to aid you create the .env file.
 
